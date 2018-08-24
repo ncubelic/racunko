@@ -38,25 +38,19 @@ class AppCoordinator: NSObject, Coordinator {
     }
     
     private func showLoginFlow() {
-        let vc = UIViewController()
-        window.rootViewController = vc
-        window.makeKeyAndVisible()
-        
-//        let loginCoordinator = LoginCoordinator(rootViewController: vc, dependencyManager: dependencyManager)
-//        loginCoordinator.delegate = self
-//        loginCoordinator.start()
-//        addChildCoordinator(loginCoordinator)
     }
     
     private func showMainFlow() {
         let splitVC = UISplitViewController()
+        splitVC.view.backgroundColor = UIColor(named: "SecondaryDark")
         rootViewController = splitVC
+
+        let clientCoordinator = ClientCoordinator(rootViewController: splitVC, dependencyManager: dependencyManager)
+        clientCoordinator.start()
+        addChildCoordinator(clientCoordinator)
+        
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
-
-//        let ordersCoordinator = OrdersCoordinator(rootViewController: splitVC, dependencyManager: dependencyManager)
-//        ordersCoordinator.start()
-//        addChildCoordinator(ordersCoordinator)
     }
 }
 
@@ -76,8 +70,12 @@ extension AppCoordinator {
     
     private func configureAppearance() {
         let navbar = UINavigationBar.appearance()
+        navbar.barTintColor = UIColor(named: "SecondaryDark")
         navbar.barStyle = .black
         navbar.tintColor = .white
         navbar.isTranslucent = false
+        navbar.shadowImage = UIImage()
+        navbar.setBackgroundImage(UIImage(), for: .default)
+        navbar.backgroundColor = UIColor(named: "SecondaryDark")
     }
 }
