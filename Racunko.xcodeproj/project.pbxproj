@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		93B687A02130312300591C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6879F2130312300591C4E /* AppDelegate.swift */; };
-		93B687A22130312300591C4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687A12130312300591C4E /* ViewController.swift */; };
 		93B687A52130312300591C4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A32130312300591C4E /* Main.storyboard */; };
 		93B687A72130312400591C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A62130312400591C4E /* Assets.xcassets */; };
 		93B687AA2130312400591C4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A82130312400591C4E /* LaunchScreen.storyboard */; };
+		93B687B6213033A400591C4E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687B3213033A400591C4E /* AppCoordinator.swift */; };
+		93B687B7213033A400591C4E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687B4213033A400591C4E /* Coordinator.swift */; };
+		93B687B92130343300591C4E /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687B82130343300591C4E /* DependencyManager.swift */; };
+		93B687BB2130350200591C4E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B687BA2130350200591C4E /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		93B6879C2130312300591C4E /* Racunko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Racunko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B6879F2130312300591C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		93B687A12130312300591C4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		93B687A42130312300591C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93B687A62130312400591C4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93B687A92130312400591C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B687AB2130312400591C4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93B687B3213033A400591C4E /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		93B687B4213033A400591C4E /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		93B687B82130343300591C4E /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		93B687BA2130350200591C4E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +61,24 @@
 			isa = PBXGroup;
 			children = (
 				93B6879F2130312300591C4E /* AppDelegate.swift */,
-				93B687A12130312300591C4E /* ViewController.swift */,
+				93B687B3213033A400591C4E /* AppCoordinator.swift */,
+				93B687B4213033A400591C4E /* Coordinator.swift */,
+				93B687B82130343300591C4E /* DependencyManager.swift */,
 				93B687A32130312300591C4E /* Main.storyboard */,
+				93B687B12130336200591C4E /* Supporting Files */,
+			);
+			path = Racunko;
+			sourceTree = "<group>";
+		};
+		93B687B12130336200591C4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				93B687A62130312400591C4E /* Assets.xcassets */,
+				93B687BA2130350200591C4E /* Colors.xcassets */,
 				93B687A82130312400591C4E /* LaunchScreen.storyboard */,
 				93B687AB2130312400591C4E /* Info.plist */,
 			);
-			path = Racunko;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93B687AA2130312400591C4E /* LaunchScreen.storyboard in Resources */,
+				93B687BB2130350200591C4E /* Colors.xcassets in Resources */,
 				93B687A72130312400591C4E /* Assets.xcassets in Resources */,
 				93B687A52130312300591C4E /* Main.storyboard in Resources */,
 			);
@@ -135,7 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93B687A22130312300591C4E /* ViewController.swift in Sources */,
+				93B687B92130343300591C4E /* DependencyManager.swift in Sources */,
+				93B687B7213033A400591C4E /* Coordinator.swift in Sources */,
+				93B687B6213033A400591C4E /* AppCoordinator.swift in Sources */,
 				93B687A02130312300591C4E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +302,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LG45P8D7VF;
-				INFOPLIST_FILE = Racunko/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Racunko/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,7 +310,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ingemark.test.Racunko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -300,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LG45P8D7VF;
-				INFOPLIST_FILE = Racunko/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Racunko/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ingemark.test.Racunko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
