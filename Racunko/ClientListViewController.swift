@@ -10,6 +10,7 @@ import UIKit
 
 protocol ClientListViewControllerDelegate {
     func didSelectCompany(_ company: Company)
+    func addNewClient()
 }
 
 class ClientListViewController: UIViewController {
@@ -32,6 +33,7 @@ class ClientListViewController: UIViewController {
     }
     
     @IBAction func addClientAction(_ sender: Any) {
+        delegate?.addNewClient()
     }
 
 }

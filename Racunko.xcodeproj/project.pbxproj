@@ -26,6 +26,7 @@
 		93B687CF2130455700591C4E /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687CE2130455700591C4E /* Invoice.swift */; };
 		93B687D0213048F200591C4E /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93B687C02130399100591C4E /* PTSans-Bold.ttf */; };
 		93B687D1213048F400591C4E /* PTSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93B687C12130399100591C4E /* PTSans-Regular.ttf */; };
+		93B687D52130536800591C4E /* AddClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687D42130536800591C4E /* AddClientViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		93B687CA213042FD00591C4E /* InvoiceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListViewController.swift; sourceTree = "<group>"; };
 		93B687CC213044F400591C4E /* InvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableViewCell.swift; sourceTree = "<group>"; };
 		93B687CE2130455700591C4E /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		93B687D42130536800591C4E /* AddClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClientViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				93B687CA213042FD00591C4E /* InvoiceListViewController.swift */,
 				93B687CC213044F400591C4E /* InvoiceTableViewCell.swift */,
 				93B687CE2130455700591C4E /* Invoice.swift */,
+				93B687D42130536800591C4E /* AddClientViewController.swift */,
 			);
 			path = Racunko;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93B687B92130343300591C4E /* DependencyManager.swift in Sources */,
+				93B687D52130536800591C4E /* AddClientViewController.swift in Sources */,
 				93B687B7213033A400591C4E /* Coordinator.swift in Sources */,
 				93B687B6213033A400591C4E /* AppCoordinator.swift in Sources */,
 				93B687C321303BA100591C4E /* ClientTableViewCell.swift in Sources */,

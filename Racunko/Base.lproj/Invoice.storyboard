@@ -109,6 +109,45 @@
             </objects>
             <point key="canvasLocation" x="5.5999999999999996" y="182.15892053973016"/>
         </scene>
+        <!--Add new company-->
+        <scene sceneID="PQL-62-QdR">
+            <objects>
+                <viewController storyboardIdentifier="AddClientViewController" id="mtV-9S-7Dt" customClass="AddClientViewController" customModule="Racunko" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z2x-gV-1Mt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="c0I-Hd-Mxu">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" name="PrimaryDark"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7Mb-ac-Wg3">
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Mb-ac-Wg3" id="AJ0-fm-bPq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="PrimaryDark"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="PrimaryDark"/>
+                        <constraints>
+                            <constraint firstItem="eV1-xI-wj4" firstAttribute="bottom" secondItem="c0I-Hd-Mxu" secondAttribute="bottom" id="3ZH-eS-i4M"/>
+                            <constraint firstItem="eV1-xI-wj4" firstAttribute="trailing" secondItem="c0I-Hd-Mxu" secondAttribute="trailing" id="6iA-Qe-ytv"/>
+                            <constraint firstItem="c0I-Hd-Mxu" firstAttribute="top" secondItem="eV1-xI-wj4" secondAttribute="top" id="HsC-ic-ppv"/>
+                            <constraint firstItem="c0I-Hd-Mxu" firstAttribute="leading" secondItem="eV1-xI-wj4" secondAttribute="leading" id="hpZ-Dm-O3T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eV1-xI-wj4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add new company" id="xEW-x9-iKo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITi-Gw-4aK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6" y="882"/>
+        </scene>
         <!--# 1-1-1-->
         <scene sceneID="9SZ-TF-i1w">
             <objects>
@@ -229,6 +268,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="PrimaryDark">
+            <color red="0.20000000000000001" green="0.18431372549019609" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="PrimaryDark">
             <color red="0.20000000000000001" green="0.18431372549019609" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

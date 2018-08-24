@@ -27,7 +27,6 @@ class ClientCoordinator: NSObject, SplitCoordinator {
     func start() {
         let clientListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(ClientListViewController.self)
         clientListVC.delegate = self
-        masterNavigationController.navigationBar.prefersLargeTitles = true
         masterNavigationController.setViewControllers([clientListVC], animated: false)
         
         let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
@@ -44,6 +43,12 @@ extension ClientCoordinator: ClientListViewControllerDelegate {
     func didSelectCompany(_ company: Company) {
         let invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
         masterNavigationController.pushViewController(invoiceListVC, animated: true)
+    }
+    
+    func addNewClient() {
+        let addClientVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(AddClientViewController.self)
+        let navVC = UINavigationController(rootViewController: addClientVC)
+        rootViewController.present(navVC, animated: true, completion: nil)
     }
 }
 
