@@ -118,10 +118,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="c0I-Hd-Mxu">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" name="PrimaryDark"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7Mb-ac-Wg3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddCompanyTableViewCell" id="7Mb-ac-Wg3">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Mb-ac-Wg3" id="AJ0-fm-bPq">
@@ -131,6 +131,10 @@
                                         <color key="backgroundColor" name="PrimaryDark"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mtV-9S-7Dt" id="DFB-Wy-C6V"/>
+                                    <outlet property="delegate" destination="mtV-9S-7Dt" id="dVo-N9-3GK"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" name="PrimaryDark"/>
@@ -142,11 +146,28 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eV1-xI-wj4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add new company" id="xEW-x9-iKo"/>
+                    <navigationItem key="navigationItem" title="Add new company" id="HH5-97-gkP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="h2W-wM-BBt">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancelAction:" destination="mtV-9S-7Dt" id="TdE-gV-5zD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="oYf-cU-ehj">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveAction:" destination="mtV-9S-7Dt" id="Yaw-p6-lSQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="c0I-Hd-Mxu" id="Hq0-qr-tvX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITi-Gw-4aK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="882"/>
+            <point key="canvasLocation" x="6" y="1115"/>
         </scene>
         <!--# 1-1-1-->
         <scene sceneID="9SZ-TF-i1w">
@@ -256,7 +277,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Ql-gc-Nr4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Invoices" id="eLt-qP-8VU"/>
+                    <navigationItem key="navigationItem" title="Invoices" id="eLt-qP-8VU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TLG-0q-cbB">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addNewInvoiceAction:" destination="pP7-EO-o3m" id="pqu-Ij-Iut"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="DK3-pc-tii" id="KQD-dh-Ip3"/>
@@ -265,6 +293,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJ0-A4-Vb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1493.5999999999999" y="175.86206896551724"/>
+        </scene>
+        <!--Add Invoice-->
+        <scene sceneID="c3b-5u-n6v">
+            <objects>
+                <viewController storyboardIdentifier="AddInvoiceViewController" id="aJf-mM-85r" customClass="AddInvoiceViewController" customModule="Racunko" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zLo-Ao-CAe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qjk-O9-7dq">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" name="PrimaryDark"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddInvoiceTableViewCell" id="465-0D-yB3">
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="465-0D-yB3" id="6ae-tw-Jzr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="PrimaryDark"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aJf-mM-85r" id="gni-Zi-zrg"/>
+                                    <outlet property="delegate" destination="aJf-mM-85r" id="yh8-QB-s3F"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="PrimaryDark"/>
+                        <constraints>
+                            <constraint firstItem="8Dd-jH-pF9" firstAttribute="bottom" secondItem="Qjk-O9-7dq" secondAttribute="bottom" id="a6y-Xe-LzM"/>
+                            <constraint firstItem="Qjk-O9-7dq" firstAttribute="leading" secondItem="8Dd-jH-pF9" secondAttribute="leading" id="nxh-1J-Pov"/>
+                            <constraint firstItem="8Dd-jH-pF9" firstAttribute="trailing" secondItem="Qjk-O9-7dq" secondAttribute="trailing" id="usY-WZ-y1f"/>
+                            <constraint firstItem="Qjk-O9-7dq" firstAttribute="top" secondItem="8Dd-jH-pF9" secondAttribute="top" id="w3M-aF-G2b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Dd-jH-pF9"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Invoice" id="s4q-4X-QQS">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fff-5K-tIe">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancelAction:" destination="aJf-mM-85r" id="jpQ-fA-yF8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="tfD-h3-AC9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveAction:" destination="aJf-mM-85r" id="ERF-iA-lnR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="Qjk-O9-7dq" id="oAt-e8-AgG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1b7-3D-F3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2222" y="173"/>
         </scene>
     </scenes>
     <resources>

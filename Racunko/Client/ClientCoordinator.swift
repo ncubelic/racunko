@@ -38,6 +38,8 @@ class ClientCoordinator: NSObject, SplitCoordinator {
 }
 
 
+// MARK: - ClientListViewController delegate
+
 extension ClientCoordinator: ClientListViewControllerDelegate {
     
     func didSelectCompany(_ company: Company) {
@@ -48,10 +50,27 @@ extension ClientCoordinator: ClientListViewControllerDelegate {
     func addNewClient() {
         let addClientVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(AddClientViewController.self)
         let navVC = UINavigationController(rootViewController: addClientVC)
-        rootViewController.present(navVC, animated: true, completion: nil)
+        addClientVC.delegate = self
+        detailsNavigationController.present(navVC, animated: true, completion: nil)
     }
 }
 
+
+// MARK: - AddClientViewController delegate
+
+extension ClientCoordinator: AddClientViewControllerDelegate {
+    
+    func cancelAction() {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func save(_ client: Company) {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - SplitViewController
 
 extension UISplitViewController {
     
