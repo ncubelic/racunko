@@ -121,14 +121,39 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" name="PrimaryDark"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddCompanyTableViewCell" id="7Mb-ac-Wg3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddClientTableViewCell" id="7Mb-ac-Wg3" customClass="AddClientTableViewCell" customModule="Racunko" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Mb-ac-Wg3" id="AJ0-fm-bPq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F6-st-NCv">
+                                                    <rect key="frame" x="15" y="12" width="38" height="21"/>
+                                                    <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Placeholder" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEw-ir-0Xn">
+                                                    <rect key="frame" x="63" y="12" width="297" height="20"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="PTSans-Regular" family="PT Sans" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6F6-st-NCv" firstAttribute="leading" secondItem="AJ0-fm-bPq" secondAttribute="leading" constant="15" id="0Yg-fL-UxX"/>
+                                                <constraint firstItem="6F6-st-NCv" firstAttribute="centerY" secondItem="AJ0-fm-bPq" secondAttribute="centerY" id="0ap-9S-4Dz"/>
+                                                <constraint firstAttribute="trailing" secondItem="MEw-ir-0Xn" secondAttribute="trailing" constant="15" id="6dy-mW-KTy"/>
+                                                <constraint firstItem="MEw-ir-0Xn" firstAttribute="centerY" secondItem="6F6-st-NCv" secondAttribute="centerY" id="eFM-Qb-1zO"/>
+                                                <constraint firstItem="MEw-ir-0Xn" firstAttribute="leading" secondItem="6F6-st-NCv" secondAttribute="trailing" constant="10" id="jXn-GR-0mQ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="PrimaryDark"/>
+                                        <connections>
+                                            <outlet property="textField" destination="MEw-ir-0Xn" id="lnc-v2-Qvi"/>
+                                            <outlet property="titleTextLabel" destination="6F6-st-NCv" id="FlD-2e-DnB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -356,9 +381,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="PrimaryDark">
-            <color red="0.20000000000000001" green="0.18431372549019609" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="PrimaryDark">
             <color red="0.20000000000000001" green="0.18431372549019609" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

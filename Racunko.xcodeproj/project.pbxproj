@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9351ED0E21395FF7006CEDAC /* AddInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */; };
 		9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */; };
+		9380B6692147AB3900C39838 /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6682147AB3900C39838 /* PDFGenerator.swift */; };
+		9380B66C2147EFE400C39838 /* AddClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B66B2147EFE400C39838 /* AddClientTableViewCell.swift */; };
 		93B687A02130312300591C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6879F2130312300591C4E /* AppDelegate.swift */; };
 		93B687A52130312300591C4E /* Invoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A32130312300591C4E /* Invoice.storyboard */; };
 		93B687A72130312400591C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A62130312400591C4E /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceViewController.swift; sourceTree = "<group>"; };
 		9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCoordinator.swift; sourceTree = "<group>"; };
+		9380B6682147AB3900C39838 /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
+		9380B66B2147EFE400C39838 /* AddClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClientTableViewCell.swift; sourceTree = "<group>"; };
 		93B6879C2130312300591C4E /* Racunko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Racunko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B6879F2130312300591C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B687A42130312300591C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Invoice.storyboard; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 				93B687BE213038D200591C4E /* ClientListViewController.swift */,
 				93B687C221303BA100591C4E /* ClientTableViewCell.swift */,
 				93B687D42130536800591C4E /* AddClientViewController.swift */,
+				9380B66B2147EFE400C39838 /* AddClientTableViewCell.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -90,8 +95,17 @@
 				93B687CE2130455700591C4E /* Invoice.swift */,
 				9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */,
 				9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */,
+				9380B66A2147AB4000C39838 /* PDF generator */,
 			);
 			path = Invoice;
+			sourceTree = "<group>";
+		};
+		9380B66A2147AB4000C39838 /* PDF generator */ = {
+			isa = PBXGroup;
+			children = (
+				9380B6682147AB3900C39838 /* PDFGenerator.swift */,
+			);
+			path = "PDF generator";
 			sourceTree = "<group>";
 		};
 		93B687932130312300591C4E = {
@@ -213,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9380B6692147AB3900C39838 /* PDFGenerator.swift in Sources */,
 				93B687B92130343300591C4E /* DependencyManager.swift in Sources */,
 				93B687D52130536800591C4E /* AddClientViewController.swift in Sources */,
 				93B687B7213033A400591C4E /* Coordinator.swift in Sources */,
@@ -226,6 +241,7 @@
 				93B687BD213036B900591C4E /* ClientCoordinator.swift in Sources */,
 				93B687CB213042FD00591C4E /* InvoiceListViewController.swift in Sources */,
 				93B687C521303C1B00591C4E /* Company.swift in Sources */,
+				9380B66C2147EFE400C39838 /* AddClientTableViewCell.swift in Sources */,
 				93B687CD213044F400591C4E /* InvoiceTableViewCell.swift in Sources */,
 				93B687C92130419A00591C4E /* InvoiceViewController.swift in Sources */,
 				93B687C721303ECA00591C4E /* UIStoryboard+Extension.swift in Sources */,

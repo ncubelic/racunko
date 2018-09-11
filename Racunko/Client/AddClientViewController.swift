@@ -13,12 +13,38 @@ protocol AddClientViewControllerDelegate {
     func save(_ client: Company)
 }
 
+enum ItemType {
+    case textField(placeholder: String, text: String?)
+    case label(text: String)
+    case disclosure
+    
+    func getValue() -> String? {
+        switch self {
+        case .textField(_, let string): return string
+        case .label(let string): return string
+        default: return nil
+        }
+    }
+}
+
+struct Item {
+    var title: String
+    var type: ItemType
+}
+
 class AddClientViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var delegate: AddClientViewControllerDelegate?
     var client: Company?
+    
+    var items: [Item] = [
+        Item(title: "Naziv firme", type: .textField(placeholder: "Firma d.o.o.", text: nil)),
+        Item(title: "Adresa", type: .textField(placeholder: "Ivice Ivića 10", text: nil)),
+        Item(title: "Poštanski broj i mjesto", type: .textField(placeholder: "10000 Zagreb", text: nil)),
+        Item(title: "OIB", type: .textField(placeholder: "12345678901", text: nil))
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +56,19 @@ class AddClientViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         guard let client = client else { return }
+        extractCompanyValues(from: items)
         delegate?.save(client)
+    }
+    
+    private func extractCompanyValues(from items: [Item]) {
+        guard
+            let name = items[0].type.getValue(),
+            let oib = Int(items[3].type.getValue() ?? ""),
+            let address = items[1].type.getValue(),
+            let city = items[2].type.getValue()
+            else { return }
+        let company = Company(name: name, oib: oib, address: address, zip: 0, city: city)
+        client = company
     }
 }
 
@@ -40,11 +78,15 @@ class AddClientViewController: UIViewController {
 extension AddClientViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddCompanyTableViewCell", for: indexPath)
+        let item = items[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddClientTableViewCell", for: indexPath) as! AddClientTableViewCell
+        cell.setup(with: item)
+        cell.textField.delegate = self
+        cell.textField.tag = indexPath.row
         return cell
     }
 }
@@ -56,5 +98,17 @@ extension AddClientViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+// MARK: - UITextField Delegate
+
+extension AddClientViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let itemPositionInTable = textField.tag
+        let currentPlaceholder = textField.attributedPlaceholder?.string ?? ""
+        items[itemPositionInTable].type = .textField(placeholder: currentPlaceholder, text: textField.text)
     }
 }
