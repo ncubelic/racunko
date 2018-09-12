@@ -55,8 +55,9 @@ class AddClientViewController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        guard let client = client else { return }
+        view.endEditing(true)
         extractCompanyValues(from: items)
+        guard let client = client else { return }
         delegate?.save(client)
     }
     

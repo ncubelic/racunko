@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ClientListViewControllerDelegate {
-    func didSelectCompany(_ company: Company)
+    func didSelectCompany(_ client: Client)
     func addNewClient()
 }
 
@@ -19,17 +19,17 @@ class ClientListViewController: UIViewController {
     
     var delegate: ClientListViewControllerDelegate?
     
-    var items: [Company] = [
-        Company(name: "Ingemark d.o.o.", oib: 1234123, address: "Vukovarska 269d", zip: 10000, city: "Zagreb"),
-        Company(name: "Ingemark d.o.o.", oib: 1234123, address: "Vukovarska 269d", zip: 10000, city: "Zagreb"),
-        Company(name: "Ingemark d.o.o.", oib: 1234123, address: "Vukovarska 269d", zip: 10000, city: "Zagreb"),
-        Company(name: "Ingemark d.o.o.", oib: 1234123, address: "Vukovarska 269d", zip: 10000, city: "Zagreb")
-    ]
+    var items: [Client] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .always
+    }
+    
+    func updateClients(with items: [Client]) {
+        self.items = items
+        tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
     
     @IBAction func addClientAction(_ sender: Any) {
@@ -61,7 +61,7 @@ extension ClientListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let company = items[indexPath.row]
-        delegate?.didSelectCompany(company)
+        let client = items[indexPath.row]
+        delegate?.didSelectCompany(client)
     }
 }

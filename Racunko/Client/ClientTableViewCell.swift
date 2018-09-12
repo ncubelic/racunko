@@ -18,8 +18,8 @@ class ClientTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func setup(with company: Company) {
-        companyNameLabel.text = company.name
-        companyOibLabel.text = String(company.oib)
+    func setup(with client: Client) {
+        companyNameLabel.text = client.name
+        companyOibLabel.text = String(client.oib)
     }
 }

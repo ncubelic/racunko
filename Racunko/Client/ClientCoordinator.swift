@@ -19,14 +19,17 @@ class ClientCoordinator: NSObject, SplitCoordinator {
     private var masterNavigationController = UINavigationController()
     private var detailsNavigationController = UINavigationController()
     
+    private var clientListVC: ClientListViewController
+    
     required init(rootViewController: UISplitViewController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
         self.dependencyManager = dependencyManager
+        clientListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(ClientListViewController.self)
     }
     
     func start() {
-        let clientListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(ClientListViewController.self)
         clientListVC.delegate = self
+        clientListVC.items = dependencyManager.coreDataManager.getClients()
         masterNavigationController.setViewControllers([clientListVC], animated: false)
         
         let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
@@ -42,7 +45,7 @@ class ClientCoordinator: NSObject, SplitCoordinator {
 
 extension ClientCoordinator: ClientListViewControllerDelegate {
     
-    func didSelectCompany(_ company: Company) {
+    func didSelectCompany(_ client: Client) {
         let invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
         masterNavigationController.pushViewController(invoiceListVC, animated: true)
     }
@@ -66,6 +69,8 @@ extension ClientCoordinator: AddClientViewControllerDelegate {
     
     func save(_ client: Company) {
         rootViewController.dismiss(animated: true, completion: nil)
+        dependencyManager.coreDataManager.addClient(client)
+        clientListVC.updateClients(with: dependencyManager.coreDataManager.getClients()) 
     }
 }
 

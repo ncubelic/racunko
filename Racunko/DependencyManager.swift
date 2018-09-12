@@ -10,4 +10,9 @@ import Foundation
 
 class DependencyManager {
     
+    var coreDataManager: CoreDataManager
+    
+    init(coreDataManager: CoreDataManager) {
+        self.coreDataManager = coreDataManager
+    }
 }

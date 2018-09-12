@@ -11,6 +11,9 @@
 		9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */; };
 		9380B6692147AB3900C39838 /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6682147AB3900C39838 /* PDFGenerator.swift */; };
 		9380B66C2147EFE400C39838 /* AddClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B66B2147EFE400C39838 /* AddClientTableViewCell.swift */; };
+		9380B66F2148F50600C39838 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B66E2148F50600C39838 /* CoreDataManager.swift */; };
+		9380B6932148F5DF00C39838 /* Invoice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6912148F5DF00C39838 /* Invoice.xcdatamodeld */; };
+		9380B6952148F6AE00C39838 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6942148F6AE00C39838 /* Client.swift */; };
 		93B687A02130312300591C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6879F2130312300591C4E /* AppDelegate.swift */; };
 		93B687A52130312300591C4E /* Invoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A32130312300591C4E /* Invoice.storyboard */; };
 		93B687A72130312400591C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A62130312400591C4E /* Assets.xcassets */; };
@@ -38,6 +41,9 @@
 		9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCoordinator.swift; sourceTree = "<group>"; };
 		9380B6682147AB3900C39838 /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
 		9380B66B2147EFE400C39838 /* AddClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClientTableViewCell.swift; sourceTree = "<group>"; };
+		9380B66E2148F50600C39838 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		9380B6922148F5DF00C39838 /* Invoice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Invoice.xcdatamodel; sourceTree = "<group>"; };
+		9380B6942148F6AE00C39838 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		93B6879C2130312300591C4E /* Racunko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Racunko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B6879F2130312300591C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B687A42130312300591C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Invoice.storyboard; sourceTree = "<group>"; };
@@ -108,6 +114,16 @@
 			path = "PDF generator";
 			sourceTree = "<group>";
 		};
+		9380B66D2148F4ED00C39838 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				9380B66E2148F50600C39838 /* CoreDataManager.swift */,
+				9380B6942148F6AE00C39838 /* Client.swift */,
+				9380B6912148F5DF00C39838 /* Invoice.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		93B687932130312300591C4E = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +149,7 @@
 				93B687B82130343300591C4E /* DependencyManager.swift */,
 				93B687C421303C1B00591C4E /* Company.swift */,
 				93B687C621303ECA00591C4E /* UIStoryboard+Extension.swift */,
+				9380B66D2148F4ED00C39838 /* Core Data */,
 				9351ED0B21395FBA006CEDAC /* Client */,
 				9351ED0C21395FCB006CEDAC /* Invoice */,
 				93B687B12130336200591C4E /* Supporting Files */,
@@ -230,9 +247,12 @@
 				9380B6692147AB3900C39838 /* PDFGenerator.swift in Sources */,
 				93B687B92130343300591C4E /* DependencyManager.swift in Sources */,
 				93B687D52130536800591C4E /* AddClientViewController.swift in Sources */,
+				9380B66F2148F50600C39838 /* CoreDataManager.swift in Sources */,
 				93B687B7213033A400591C4E /* Coordinator.swift in Sources */,
+				9380B6932148F5DF00C39838 /* Invoice.xcdatamodeld in Sources */,
 				93B687B6213033A400591C4E /* AppCoordinator.swift in Sources */,
 				9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */,
+				9380B6952148F6AE00C39838 /* Client.swift in Sources */,
 				9351ED0E21395FF7006CEDAC /* AddInvoiceViewController.swift in Sources */,
 				93B687C321303BA100591C4E /* ClientTableViewCell.swift in Sources */,
 				93B687BF213038D200591C4E /* ClientListViewController.swift in Sources */,
@@ -442,6 +462,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9380B6912148F5DF00C39838 /* Invoice.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9380B6922148F5DF00C39838 /* Invoice.xcdatamodel */,
+			);
+			currentVersion = 9380B6922148F5DF00C39838 /* Invoice.xcdatamodel */;
+			path = Invoice.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 93B687942130312300591C4E /* Project object */;
 }

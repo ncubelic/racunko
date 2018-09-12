@@ -20,7 +20,7 @@ class AppCoordinator: NSObject, Coordinator {
         self.window = window
         window.backgroundColor = .darkGray
         self.rootViewController = rootViewController
-        self.dependencyManager = DependencyManager()
+        self.dependencyManager = DependencyManager(coreDataManager: CoreDataManager())
     }
 
     func start() {
