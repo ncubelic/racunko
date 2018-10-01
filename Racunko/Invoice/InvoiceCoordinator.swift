@@ -15,22 +15,26 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
     var childCoordinators: [Coordinator] = []
     var dependencyManager: DependencyManager
     
-    var company: Company?
+    var client: Client?
+    
+    private var invoiceListVC: InvoiceListViewController
     
     required init(rootViewController: UINavigationController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
         self.dependencyManager = dependencyManager
+        
+        invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
     }
     
     func start() {
-        guard let company = company else { return }
-        showInvoiceList(for: company)
+        guard let client = client else { return }
+        showInvoiceList(for: client)
     }
     
-    private func showInvoiceList(for company: Company) {
-        let invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
-        invoiceListVC.currentCompany = company
+    private func showInvoiceList(for client: Client) {
+//        invoiceListVC.currentCompany = client
         invoiceListVC.delegate = self
+        invoiceListVC.items2 = dependencyManager.coreDataManager.getInvoices(for: client)
         rootViewController.pushViewController(invoiceListVC, animated: true)
     }
     

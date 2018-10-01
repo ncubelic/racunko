@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Invoice {
+struct InvoiceModel {
     
     var number: String
     var createdAt: Date

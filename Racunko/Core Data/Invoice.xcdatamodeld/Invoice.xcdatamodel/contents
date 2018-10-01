@@ -6,8 +6,17 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="oib" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="invoices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Invoice" syncable="YES"/>
+    </entity>
+    <entity name="Invoice" representedClassName=".Invoice" syncable="YES" codeGenerationType="category">
+        <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="number" attributeType="String" syncable="YES"/>
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Client" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="Client" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Invoice" positionX="-54" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

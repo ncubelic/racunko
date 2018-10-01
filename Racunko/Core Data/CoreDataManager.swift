@@ -65,4 +65,22 @@ class CoreDataManager {
         guard let result = try? persistentContainer.viewContext.fetch(fetchRequest) else { return [] }
         return result
     }
+    
+    /// Insert new Invoice for Client
+    func addInvoice(_ invoiceModel: InvoiceModel, for client: Client) {
+        let invoice = Invoice(context: persistentContainer.viewContext)
+        invoice.number = invoiceModel.number
+        invoice.amount = invoiceModel.amount
+        invoice.createdAt = invoiceModel.createdAt
+        invoice.date = invoiceModel.date
+        invoice.client = client
+        saveContext()
+    }
+    
+    /// Get list of invoices by Client
+    func getInvoices(for client: Client) -> [Invoice] {
+        let fetchRequest: NSFetchRequest<Invoice> = Invoice.fetchRequest()
+        guard let result = try? persistentContainer.viewContext.fetch(fetchRequest) else { return [] }
+        return result
+    }
 }

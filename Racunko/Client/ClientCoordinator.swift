@@ -46,7 +46,10 @@ class ClientCoordinator: NSObject, SplitCoordinator {
 extension ClientCoordinator: ClientListViewControllerDelegate {
     
     func didSelectCompany(_ client: Client) {
+        let invoiceCoordinator = InvoiceCoordinator(rootViewController: rootViewController, dependencyManager: dependencyManager)
+        
         let invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
+        invoiceListVC.items2 = dependencyManager.coreDataManager.getInvoices(for: client)
         masterNavigationController.pushViewController(invoiceListVC, animated: true)
     }
     

@@ -21,7 +21,9 @@ class InvoiceTableViewCell: UITableViewCell {
     func setup(with invoice: Invoice) {
         invoiceNumberLabel.text = invoice.number
         invoiceAmountLabel.text = String(invoice.amount)
-        invoiceDateLabel.text = DateFormatter.localizedString(from: invoice.date, dateStyle: .medium, timeStyle: .none)
+        if let date = invoice.date {
+            invoiceDateLabel.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)            
+        }
     }
 
 }

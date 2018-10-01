@@ -14,6 +14,7 @@
 		9380B66F2148F50600C39838 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B66E2148F50600C39838 /* CoreDataManager.swift */; };
 		9380B6932148F5DF00C39838 /* Invoice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6912148F5DF00C39838 /* Invoice.xcdatamodeld */; };
 		9380B6952148F6AE00C39838 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6942148F6AE00C39838 /* Client.swift */; };
+		9380B697214937E900C39838 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B696214937E900C39838 /* Invoice.swift */; };
 		93B687A02130312300591C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6879F2130312300591C4E /* AppDelegate.swift */; };
 		93B687A52130312300591C4E /* Invoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A32130312300591C4E /* Invoice.storyboard */; };
 		93B687A72130312400591C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A62130312400591C4E /* Assets.xcassets */; };
@@ -30,7 +31,7 @@
 		93B687C92130419A00591C4E /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687C82130419A00591C4E /* InvoiceViewController.swift */; };
 		93B687CB213042FD00591C4E /* InvoiceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687CA213042FD00591C4E /* InvoiceListViewController.swift */; };
 		93B687CD213044F400591C4E /* InvoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687CC213044F400591C4E /* InvoiceTableViewCell.swift */; };
-		93B687CF2130455700591C4E /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687CE2130455700591C4E /* Invoice.swift */; };
+		93B687CF2130455700591C4E /* InvoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687CE2130455700591C4E /* InvoiceModel.swift */; };
 		93B687D0213048F200591C4E /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93B687C02130399100591C4E /* PTSans-Bold.ttf */; };
 		93B687D1213048F400591C4E /* PTSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93B687C12130399100591C4E /* PTSans-Regular.ttf */; };
 		93B687D52130536800591C4E /* AddClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B687D42130536800591C4E /* AddClientViewController.swift */; };
@@ -44,6 +45,7 @@
 		9380B66E2148F50600C39838 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		9380B6922148F5DF00C39838 /* Invoice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Invoice.xcdatamodel; sourceTree = "<group>"; };
 		9380B6942148F6AE00C39838 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		9380B696214937E900C39838 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
 		93B6879C2130312300591C4E /* Racunko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Racunko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B6879F2130312300591C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B687A42130312300591C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Invoice.storyboard; sourceTree = "<group>"; };
@@ -64,7 +66,7 @@
 		93B687C82130419A00591C4E /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
 		93B687CA213042FD00591C4E /* InvoiceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListViewController.swift; sourceTree = "<group>"; };
 		93B687CC213044F400591C4E /* InvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableViewCell.swift; sourceTree = "<group>"; };
-		93B687CE2130455700591C4E /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		93B687CE2130455700591C4E /* InvoiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceModel.swift; sourceTree = "<group>"; };
 		93B687D42130536800591C4E /* AddClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClientViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +100,7 @@
 				93B687C82130419A00591C4E /* InvoiceViewController.swift */,
 				93B687CA213042FD00591C4E /* InvoiceListViewController.swift */,
 				93B687CC213044F400591C4E /* InvoiceTableViewCell.swift */,
-				93B687CE2130455700591C4E /* Invoice.swift */,
+				93B687CE2130455700591C4E /* InvoiceModel.swift */,
 				9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */,
 				9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */,
 				9380B66A2147AB4000C39838 /* PDF generator */,
@@ -118,10 +120,19 @@
 			isa = PBXGroup;
 			children = (
 				9380B66E2148F50600C39838 /* CoreDataManager.swift */,
-				9380B6942148F6AE00C39838 /* Client.swift */,
 				9380B6912148F5DF00C39838 /* Invoice.xcdatamodeld */,
+				9380B6982149384900C39838 /* Models */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		9380B6982149384900C39838 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9380B6942148F6AE00C39838 /* Client.swift */,
+				9380B696214937E900C39838 /* Invoice.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		93B687932130312300591C4E = {
@@ -257,7 +268,7 @@
 				93B687C321303BA100591C4E /* ClientTableViewCell.swift in Sources */,
 				93B687BF213038D200591C4E /* ClientListViewController.swift in Sources */,
 				93B687A02130312300591C4E /* AppDelegate.swift in Sources */,
-				93B687CF2130455700591C4E /* Invoice.swift in Sources */,
+				93B687CF2130455700591C4E /* InvoiceModel.swift in Sources */,
 				93B687BD213036B900591C4E /* ClientCoordinator.swift in Sources */,
 				93B687CB213042FD00591C4E /* InvoiceListViewController.swift in Sources */,
 				93B687C521303C1B00591C4E /* Company.swift in Sources */,
@@ -265,6 +276,7 @@
 				93B687CD213044F400591C4E /* InvoiceTableViewCell.swift in Sources */,
 				93B687C92130419A00591C4E /* InvoiceViewController.swift in Sources */,
 				93B687C721303ECA00591C4E /* UIStoryboard+Extension.swift in Sources */,
+				9380B697214937E900C39838 /* Invoice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
