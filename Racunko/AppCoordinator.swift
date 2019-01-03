@@ -16,10 +16,10 @@ class AppCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator] = []
     var dependencyManager: DependencyManager
     
-    init(window: UIWindow, rootViewController: UIViewController) {
+    init(window: UIWindow) {
         self.window = window
         window.backgroundColor = .darkGray
-        self.rootViewController = rootViewController
+        self.rootViewController = UINavigationController()
         self.dependencyManager = DependencyManager(coreDataManager: CoreDataManager())
     }
 
@@ -41,7 +41,12 @@ class AppCoordinator: NSObject, Coordinator {
     }
     
     private func showMainFlow() {
+        let masterNavVC = UINavigationController()
+        let detailsNavVC = UINavigationController()
         let splitVC = UISplitViewController()
+        splitVC.show(masterNavVC, sender: self)
+        splitVC.showDetailViewController(detailsNavVC, sender: self)
+        
         splitVC.view.backgroundColor = UIColor(named: "SecondaryDark")
         rootViewController = splitVC
 

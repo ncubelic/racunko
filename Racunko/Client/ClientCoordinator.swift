@@ -11,7 +11,6 @@ import UIKit
 
 class ClientCoordinator: NSObject, SplitCoordinator {
     
-    
     var rootViewController: UISplitViewController
     var childCoordinators: [Coordinator] = []
     var dependencyManager: DependencyManager
@@ -47,10 +46,10 @@ extension ClientCoordinator: ClientListViewControllerDelegate {
     
     func didSelectCompany(_ client: Client) {
         let invoiceCoordinator = InvoiceCoordinator(rootViewController: rootViewController, dependencyManager: dependencyManager)
-        
-        let invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
-        invoiceListVC.items2 = dependencyManager.coreDataManager.getInvoices(for: client)
-        masterNavigationController.pushViewController(invoiceListVC, animated: true)
+//
+//        let invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
+//        invoiceListVC.items2 = dependencyManager.coreDataManager.getInvoices(for: client)
+//        masterNavigationController.pushViewController(invoiceListVC, animated: true)
     }
     
     func addNewClient() {
