@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InvoiceListViewControllerDelegate {
-    func addNewInvoice(for company: Company)
+    func addNewInvoice(for client: Client)
 }
 
 class InvoiceListViewController: UIViewController {
@@ -18,6 +18,7 @@ class InvoiceListViewController: UIViewController {
     
     var delegate: InvoiceListViewControllerDelegate?
     var currentCompany: Company?
+    var currentClient: Client?
     
     var items: [InvoiceModel] = [
 //        InvoiceModel(number: "1-1-1", createdAt: Date(), amount: 14960, date: Date(), company: Company(name: "Ingemark d.o.o.", oib: 1234123, address: "Vukovarska 269d", zip: 10000, city: "Zagreb")),
@@ -32,8 +33,8 @@ class InvoiceListViewController: UIViewController {
     }
     
     @IBAction func addNewInvoiceAction(_ sender: Any) {
-        guard let company = currentCompany else { return }
-        delegate?.addNewInvoice(for: company)
+        guard let client = currentClient else { return }
+        delegate?.addNewInvoice(for: client)
     }
 }
 

@@ -22,22 +22,29 @@ class AddInvoiceViewController: UIViewController {
     var invoice: Invoice?
     
     var items = [
-        ["Datum izdavanja",
-        "Vrijeme izdavanja",
-        "Datum isporuke",
-        "Broj računa",
-        "Datum dospijeća"],
-        ["Naziv usluge",
-        "Količina",
-        "Cijena",
-        "Popust",
-        "Iznos"],
-        ["Način plaćanja",
-        "Napomena"]
+        [
+            Item(title: "Datum izdavanja", type: ItemType.textField(placeholder: "dd.MM.yyyy.", text: nil)),
+            Item(title: "Vrijeme izdavanja", type: ItemType.textField(placeholder: "HH:mm:SS.", text: nil)),
+            Item(title: "Datum isporuke", type: ItemType.textField(placeholder: "dd.MM.yyyy.", text: nil)),
+            Item(title: "Broj računa", type: ItemType.textField(placeholder: "#-#-#", text: nil)),
+            Item(title: "Datum dospijeća", type: ItemType.textField(placeholder: "dd.MM.yyyy.", text: nil))
+        ],
+        [
+            Item(title: "", type: ItemType.invoiceItem(item: InvoiceItem()))
+        ],
+        [
+            Item(title: "Način plaćanja", type: ItemType.label(text: "Transakcijski račun")),
+            Item(title: "Napomena", type: ItemType.label(text: "Plaćanje izvršite prema gore navedenim podacima na račun broj HR1012392130498, pod poziv na broj upišite broj računa")),
+        ]
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 50.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        tableView.register(UINib(nibName: "InvoiceItemTableViewCell", bundle: nil), forCellReuseIdentifier: "InvoiceItemTableViewCell")
     }
 
     @IBAction func cancelAction(_ sender: Any) {
@@ -64,9 +71,26 @@ extension AddInvoiceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddInvoiceTableViewCell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.section][indexPath.row]
-        return cell
+        let item = items[indexPath.section][indexPath.row]
+        
+        switch item.type {
+        case .label:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddInvoiceLabelCell", for: indexPath) as! AddInvoiceLabelCell
+            cell.setup(with: item)
+            return cell
+        case .textField:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddInvoiceTextFieldCell", for: indexPath) as! AddInvoiceTextFieldCell
+            cell.setup(with: item)
+            return cell
+        case .invoiceItem(let invoiceItem):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InvoiceItemTableViewCell", for: indexPath) as! InvoiceItemTableViewCell
+            cell.setup(with: invoiceItem)
+            return cell
+        default:
+            break
+        }
+
+        return UITableViewCell()
     }
 }
 

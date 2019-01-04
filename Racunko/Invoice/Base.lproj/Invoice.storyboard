@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -129,7 +129,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F6-st-NCv">
-                                                    <rect key="frame" x="15" y="12" width="38" height="21"/>
+                                                    <rect key="frame" x="15" y="11.666666666666664" width="38" height="21"/>
                                                     <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -265,7 +265,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozR-0a-Wh4">
-                                                    <rect key="frame" x="15" y="27" width="297" height="22"/>
+                                                    <rect key="frame" x="15" y="26.666666666666671" width="297" height="22"/>
                                                     <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="17"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -330,15 +330,84 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qjk-O9-7dq">
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" name="PrimaryDark"/>
+                                <color key="separatorColor" name="SecondaryDark"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddInvoiceTableViewCell" id="465-0D-yB3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddInvoiceTextFieldCell" id="465-0D-yB3" customClass="AddInvoiceTextFieldCell" customModule="Racunko" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="465-0D-yB3" id="6ae-tw-Jzr">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0X1-kM-bSA">
+                                                    <rect key="frame" x="15" y="11" width="40" height="22"/>
+                                                    <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="17"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P25-9X-kbE">
+                                                    <rect key="frame" x="60" y="7" width="300" height="30"/>
+                                                    <color key="backgroundColor" name="SecondaryDark"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="izH-o9-atb"/>
+                                                        <constraint firstAttribute="width" constant="300" id="ofU-Lx-cPk"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P25-9X-kbE" firstAttribute="centerY" secondItem="6ae-tw-Jzr" secondAttribute="centerY" id="B6w-7i-uge"/>
+                                                <constraint firstItem="0X1-kM-bSA" firstAttribute="leading" secondItem="6ae-tw-Jzr" secondAttribute="leading" constant="15" id="Vdf-Dr-yvV"/>
+                                                <constraint firstItem="0X1-kM-bSA" firstAttribute="centerY" secondItem="6ae-tw-Jzr" secondAttribute="centerY" id="Vj0-dH-mkF"/>
+                                                <constraint firstAttribute="trailing" secondItem="P25-9X-kbE" secondAttribute="trailing" constant="15" id="bbw-Jf-ctJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="PrimaryDark"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="0X1-kM-bSA" id="6Bq-5u-4fS"/>
+                                            <outlet property="textField" destination="P25-9X-kbE" id="db4-tR-5mX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddInvoiceLabelCell" id="zaK-1M-Uc0" customClass="AddInvoiceLabelCell" customModule="Racunko" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zaK-1M-Uc0" id="elp-qJ-8J5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJY-8F-jow">
+                                                    <rect key="frame" x="15" y="11" width="100" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="YRF-qf-lHz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="17"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Toi-31-KrF">
+                                                    <rect key="frame" x="130" y="5" width="230" height="34"/>
+                                                    <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="15"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Toi-31-KrF" secondAttribute="bottom" constant="5" id="F8B-v5-qex"/>
+                                                <constraint firstAttribute="trailing" secondItem="Toi-31-KrF" secondAttribute="trailing" constant="15" id="OmI-1l-fpF"/>
+                                                <constraint firstItem="Toi-31-KrF" firstAttribute="leading" secondItem="fJY-8F-jow" secondAttribute="trailing" constant="15" id="RD5-1J-0WG"/>
+                                                <constraint firstItem="Toi-31-KrF" firstAttribute="top" secondItem="elp-qJ-8J5" secondAttribute="top" constant="5" id="U48-jJ-ggC"/>
+                                                <constraint firstItem="fJY-8F-jow" firstAttribute="centerY" secondItem="elp-qJ-8J5" secondAttribute="centerY" id="flR-9D-o8r"/>
+                                                <constraint firstItem="Toi-31-KrF" firstAttribute="centerY" secondItem="elp-qJ-8J5" secondAttribute="centerY" id="iUj-Ep-Mgb"/>
+                                                <constraint firstItem="fJY-8F-jow" firstAttribute="leading" secondItem="elp-qJ-8J5" secondAttribute="leading" constant="15" id="ngg-ie-Uta"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="PrimaryDark"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="fJY-8F-jow" id="QBc-vc-LP1"/>
+                                            <outlet property="rightLabel" destination="Toi-31-KrF" id="ng9-0G-2LU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -386,6 +455,9 @@
         </namedColor>
         <namedColor name="PrimaryText">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryDark">
+            <color red="0.13333333333333333" green="0.12156862745098039" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryText">
             <color red="1" green="1" blue="1" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>

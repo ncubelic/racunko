@@ -10,7 +10,7 @@ import UIKit
 
 protocol ClientListViewControllerDelegate {
     func didSelectCompany(_ client: Client)
-    func addNewClient()
+    func addNewClient(_ barButton: UIBarButtonItem)
 }
 
 class ClientListViewController: UIViewController {
@@ -33,7 +33,8 @@ class ClientListViewController: UIViewController {
     }
     
     @IBAction func addClientAction(_ sender: Any) {
-        delegate?.addNewClient()
+        guard let button = sender as? UIBarButtonItem else { return }
+        delegate?.addNewClient(button)
     }
 
 }

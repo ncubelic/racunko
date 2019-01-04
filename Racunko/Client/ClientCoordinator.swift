@@ -29,11 +29,8 @@ class ClientCoordinator: NSObject, SplitCoordinator {
     func start() {
         clientListVC.delegate = self
         clientListVC.items = dependencyManager.coreDataManager.getClients()
-        masterNavigationController.setViewControllers([clientListVC], animated: false)
-        
-        let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
-        detailsNavigationController.setViewControllers([invoiceVC], animated: false)
-        detailsNavigationController.title = "1-1-1"
+        masterNavigationController.setViewControllers([clientListVC], animated: true)
+        detailsNavigationController.setViewControllers([], animated: true)
 
         rootViewController.viewControllers = [masterNavigationController, detailsNavigationController]
     }
@@ -42,22 +39,30 @@ class ClientCoordinator: NSObject, SplitCoordinator {
 
 // MARK: - ClientListViewController delegate
 
-extension ClientCoordinator: ClientListViewControllerDelegate {
+extension ClientCoordinator: ClientListViewControllerDelegate, UIPopoverPresentationControllerDelegate {
     
     func didSelectCompany(_ client: Client) {
-        let invoiceCoordinator = InvoiceCoordinator(rootViewController: rootViewController, dependencyManager: dependencyManager)
-//
+        let invoiceCoordinator = InvoiceCoordinator(rootViewController: masterNavigationController, dependencyManager: dependencyManager)
+        
 //        let invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
 //        invoiceListVC.items2 = dependencyManager.coreDataManager.getInvoices(for: client)
+        invoiceCoordinator.client = client
+        invoiceCoordinator.start()
+        childCoordinators.append(invoiceCoordinator)
 //        masterNavigationController.pushViewController(invoiceListVC, animated: true)
     }
     
-    func addNewClient() {
+    func addNewClient(_ barButton: UIBarButtonItem) {
         let addClientVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(AddClientViewController.self)
         let navVC = UINavigationController(rootViewController: addClientVC)
         addClientVC.delegate = self
+        navVC.modalPresentationStyle = .popover
+        let popController = navVC.popoverPresentationController
+        popController?.delegate = self
+        popController?.barButtonItem = barButton
         detailsNavigationController.present(navVC, animated: true, completion: nil)
     }
+    
 }
 
 

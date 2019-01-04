@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PTSans-Bold.ttf">
+            <string>PTSans-Bold</string>
+        </array>
+        <array key="PTSans-Regular.ttf">
+            <string>PTSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InvoiceItemTableViewCell" id="KGk-i7-Jjw" customClass="InvoiceItemTableViewCell" customModule="Racunko" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="770" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="770" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpz-U6-lim">
+                        <rect key="frame" x="14" y="11.5" width="20" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="dPa-lC-1Rz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="PTSans-Regular" family="PT Sans" pointSize="16"/>
+                        <color key="textColor" name="PrimaryText"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Količina" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EyL-v3-VRo">
+                        <rect key="frame" x="475" y="7" width="50" height="30"/>
+                        <color key="backgroundColor" name="SecondaryDark"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="aW4-kX-94s"/>
+                            <constraint firstAttribute="width" constant="50" id="ndk-mR-xF3"/>
+                        </constraints>
+                        <color key="textColor" name="PrimaryText"/>
+                        <fontDescription key="fontDescription" name="PTSans-Regular" family="PT Sans" pointSize="15"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jedinična cijena" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLZ-1J-1TH">
+                        <rect key="frame" x="535" y="7" width="105" height="30"/>
+                        <color key="backgroundColor" name="SecondaryDark"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="i01-R8-YY9"/>
+                        </constraints>
+                        <color key="textColor" name="PrimaryText"/>
+                        <fontDescription key="fontDescription" name="PTSans-Regular" family="PT Sans" pointSize="15"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Iznos" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAX-uo-efe">
+                        <rect key="frame" x="650" y="7" width="105" height="30"/>
+                        <color key="backgroundColor" name="SecondaryDark"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="0EJ-rS-pjP"/>
+                            <constraint firstAttribute="width" constant="105" id="GOx-p3-IES"/>
+                        </constraints>
+                        <color key="textColor" name="PrimaryText"/>
+                        <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="15"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Naziv usluge" translatesAutoresizingMaskIntoConstraints="NO" id="IW3-N1-vYo">
+                        <rect key="frame" x="42" y="5" width="423" height="33.5"/>
+                        <color key="backgroundColor" name="SecondaryDark"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="423" id="7oq-2D-Hge"/>
+                        </constraints>
+                        <color key="textColor" name="PrimaryText"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <color key="backgroundColor" name="PrimaryDark"/>
+                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="GLZ-1J-1TH" firstAttribute="leading" secondItem="EyL-v3-VRo" secondAttribute="trailing" constant="10" id="7ve-Me-p2S"/>
+                    <constraint firstItem="EyL-v3-VRo" firstAttribute="leading" secondItem="IW3-N1-vYo" secondAttribute="trailing" constant="10" id="ARC-dk-05q"/>
+                    <constraint firstItem="GLZ-1J-1TH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="D6h-nT-Na7"/>
+                    <constraint firstItem="oAX-uo-efe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FmQ-0s-QJD"/>
+                    <constraint firstItem="lpz-U6-lim" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="Xw2-Rv-Dnq"/>
+                    <constraint firstItem="IW3-N1-vYo" firstAttribute="leading" secondItem="lpz-U6-lim" secondAttribute="trailing" constant="8" id="g55-od-sm8"/>
+                    <constraint firstItem="IW3-N1-vYo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gmK-7d-Txm"/>
+                    <constraint firstItem="lpz-U6-lim" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="i47-1b-IRC"/>
+                    <constraint firstItem="EyL-v3-VRo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="j2g-LT-zZw"/>
+                    <constraint firstItem="oAX-uo-efe" firstAttribute="leading" secondItem="GLZ-1J-1TH" secondAttribute="trailing" constant="10" id="lob-WA-tEO"/>
+                    <constraint firstAttribute="bottom" secondItem="IW3-N1-vYo" secondAttribute="bottom" constant="5" id="rnB-iD-f5F"/>
+                    <constraint firstItem="IW3-N1-vYo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="seT-2k-GF0"/>
+                    <constraint firstAttribute="trailing" secondItem="oAX-uo-efe" secondAttribute="trailing" constant="15" id="xf1-f8-SZF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amountTextField" destination="EyL-v3-VRo" id="VUq-qs-tZL"/>
+                <outlet property="cellNumberLabel" destination="lpz-U6-lim" id="wPo-bs-xFR"/>
+                <outlet property="descriptionTextView" destination="IW3-N1-vYo" id="S0d-uf-0jj"/>
+                <outlet property="priceTextField" destination="GLZ-1J-1TH" id="6Ye-Qe-wXN"/>
+                <outlet property="totalAmountTextField" destination="oAX-uo-efe" id="OwR-GQ-oXK"/>
+            </connections>
+            <point key="canvasLocation" x="314.0625" y="136.5234375"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="PrimaryDark">
+            <color red="0.20000000000000001" green="0.18431372549019609" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryDark">
+            <color red="0.13333333333333333" green="0.12156862745098039" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

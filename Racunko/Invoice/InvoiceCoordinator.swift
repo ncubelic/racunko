@@ -32,16 +32,17 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
     }
     
     private func showInvoiceList(for client: Client) {
-//        invoiceListVC.currentCompany = client
+        invoiceListVC.currentClient = client
         invoiceListVC.delegate = self
         invoiceListVC.items2 = dependencyManager.coreDataManager.getInvoices(for: client)
         rootViewController.pushViewController(invoiceListVC, animated: true)
     }
     
-    private func showAddInvoice(for company: Company) {
+    private func showAddInvoice(for client: Client) {
         let addInvoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(AddInvoiceViewController.self)
         addInvoiceVC.delegate = self
-        rootViewController.present(addInvoiceVC, animated: true, completion: nil)
+        let navVC = UINavigationController(rootViewController: addInvoiceVC)
+        rootViewController.present(navVC, animated: true, completion: nil)
     }
 }
 
@@ -50,8 +51,8 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
 
 extension InvoiceCoordinator: InvoiceListViewControllerDelegate {
     
-    func addNewInvoice(for company: Company) {
-        showAddInvoice(for: company)
+    func addNewInvoice(for client: Client) {
+        showAddInvoice(for: client)
     }
 }
 

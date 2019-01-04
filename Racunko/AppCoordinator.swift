@@ -41,12 +41,7 @@ class AppCoordinator: NSObject, Coordinator {
     }
     
     private func showMainFlow() {
-        let masterNavVC = UINavigationController()
-        let detailsNavVC = UINavigationController()
         let splitVC = UISplitViewController()
-        splitVC.show(masterNavVC, sender: self)
-        splitVC.showDetailViewController(detailsNavVC, sender: self)
-        
         splitVC.view.backgroundColor = UIColor(named: "SecondaryDark")
         rootViewController = splitVC
 

@@ -17,6 +17,7 @@ enum ItemType {
     case textField(placeholder: String, text: String?)
     case label(text: String)
     case disclosure
+    case invoiceItem(item: InvoiceItem)
     
     func getValue() -> String? {
         switch self {
