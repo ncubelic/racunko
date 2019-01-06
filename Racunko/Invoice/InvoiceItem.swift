@@ -21,9 +21,9 @@ extension InvoiceItem {
     
     init() {
         self.description = "Naziv usluge"
-        self.amount = 0
-        self.price = 0
-        self.totalAmount = 0
+        self.amount = 1
+        self.price = 0.0
+        self.totalAmount = 0.0
         self.discountPercentage = 0
     }
 }

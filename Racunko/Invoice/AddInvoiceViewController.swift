@@ -43,8 +43,17 @@ class AddInvoiceViewController: UIViewController {
         
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionHeaderHeight = 50
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         
         tableView.register(UINib(nibName: "InvoiceItemTableViewCell", bundle: nil), forCellReuseIdentifier: "InvoiceItemTableViewCell")
+        tableView.register(UINib(nibName: "InvoiceItemHeader", bundle: nil), forCellReuseIdentifier: "InvoiceItemHeader")
+    }
+    
+    private func addInvoiceItem() {
+        let item = Item(title: "", type: .invoiceItem(item: InvoiceItem()))
+        items[1].append(item)
+        tableView.reloadData()
     }
 
     @IBAction func cancelAction(_ sender: Any) {
@@ -100,5 +109,25 @@ extension AddInvoiceViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 1:
+            if let header = tableView.dequeueReusableCell(withIdentifier: "InvoiceItemHeader") as? InvoiceItemHeader {
+                header.delegate = self
+                return header
+            }
+            return nil
+        default:
+            return nil
+        }
+    }
+}
+
+extension AddInvoiceViewController: InvoiceItemHeaderDelegate {
+    
+    func invoiceItemHeaderDidAddItem() {
+        addInvoiceItem()
     }
 }

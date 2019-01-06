@@ -20,9 +20,9 @@ class AddInvoiceTextFieldCell: UITableViewCell {
     func setup(with item: Item) {
         if case ItemType.textField(let placeholder, let value) = item.type {
             descriptionLabel.text = item.title
-            textField.placeholder = placeholder
+            let formattedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+            textField.attributedPlaceholder = formattedPlaceholder
             textField.text = value
         }
     }
-
 }
