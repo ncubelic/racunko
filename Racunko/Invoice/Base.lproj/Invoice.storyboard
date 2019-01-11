@@ -352,7 +352,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="izH-o9-atb"/>
                                                         <constraint firstAttribute="width" constant="300" id="ofU-Lx-cPk"/>
                                                     </constraints>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="PrimaryText"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
