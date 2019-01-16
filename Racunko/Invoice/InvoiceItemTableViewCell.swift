@@ -33,6 +33,7 @@ class InvoiceItemTableViewCell: UITableViewCell {
     }
 
     func setup(with invoiceItem: InvoiceItem) {
+        // TODO: item description
 //        descriptionTextView.text = invoiceItem.description
         priceTextField.text = currencyFormatter.string(from: NSNumber(value: invoiceItem.price))
         amountTextField.text = String(invoiceItem.amount)
