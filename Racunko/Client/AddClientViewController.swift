@@ -17,13 +17,22 @@ enum ItemType {
     case textField(placeholder: String, text: String?)
     case label(text: String)
     case disclosure
-    case invoiceItem(item: InvoiceItem)
+    case invoiceItem(item: InvoiceItemModel)
     
     func getValue() -> String? {
         switch self {
         case .textField(_, let string): return string
         case .label(let string): return string
         default: return nil
+        }
+    }
+    
+    func getInvoiceItem() -> InvoiceItemModel? {
+        switch self {
+        case .invoiceItem(let item):
+            return item
+        default:
+            return nil
         }
     }
 }

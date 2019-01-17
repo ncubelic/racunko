@@ -20,7 +20,7 @@ class InvoiceTableViewCell: UITableViewCell {
     
     func setup(with invoice: Invoice) {
         invoiceNumberLabel.text = invoice.number
-        invoiceAmountLabel.text = String(invoice.amount)
+        invoiceAmountLabel.text = String(invoice.totalAmount)
         if let date = invoice.date {
             invoiceDateLabel.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)            
         }

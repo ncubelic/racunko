@@ -10,8 +10,10 @@ import UIKit
 
 protocol AddInvoiceViewControllerDelegate {
     func cancelAction()
-    func save(_ invoice: Invoice)
+    func save(_ invoice: InvoiceModel)
 }
+
+let DateTimeFormatter = DateFormatter()
 
 class AddInvoiceViewController: UIViewController {
     
@@ -19,7 +21,7 @@ class AddInvoiceViewController: UIViewController {
     
     var delegate: AddInvoiceViewControllerDelegate?
     
-    var invoice: Invoice?
+    var invoice: InvoiceModel?
     
     var items = [
         [
@@ -30,7 +32,7 @@ class AddInvoiceViewController: UIViewController {
             Item(title: "Datum dospijeća", type: ItemType.textField(placeholder: "dd.MM.yyyy.", text: nil))
         ],
         [
-            Item(title: "", type: ItemType.invoiceItem(item: InvoiceItem()))
+            Item(title: "", type: ItemType.invoiceItem(item: InvoiceItemModel()))
         ],
         [
             Item(title: "Način plaćanja", type: ItemType.label(text: "Transakcijski račun")),
@@ -48,10 +50,12 @@ class AddInvoiceViewController: UIViewController {
         
         tableView.register(UINib(nibName: "InvoiceItemTableViewCell", bundle: nil), forCellReuseIdentifier: "InvoiceItemTableViewCell")
         tableView.register(UINib(nibName: "InvoiceItemHeader", bundle: nil), forCellReuseIdentifier: "InvoiceItemHeader")
+        
+        DateTimeFormatter.dateFormat = "dd.MM.yyyy. HH:mm:SS."
     }
     
     private func addInvoiceItem() {
-        let item = Item(title: "", type: .invoiceItem(item: InvoiceItem()))
+        let item = Item(title: "", type: .invoiceItem(item: InvoiceItemModel()))
         items[1].append(item)
         tableView.reloadData()
     }
@@ -62,7 +66,43 @@ class AddInvoiceViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         guard let invoice = invoice else { return }
+        transformInvoiceData()
         delegate?.save(invoice)
+    }
+    
+    private func transformInvoiceData() {
+        let invoiceData = items[0]
+        let invoiceItems = items[1]
+        let invoiceDescription = items[2]
+        
+        let dateCreatedString = invoiceData[0].type.getValue()
+        let timeCreatedString = invoiceData[1].type.getValue()
+        let datee = invoiceData[4].type.getValue()
+        
+        guard let date = dateCreatedString, let time = timeCreatedString else { return }
+        guard let dateTimeCreated = DateTimeFormatter.date(from: "\(date) \(time)") else { return }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy."
+        
+        guard let dat = datee, let dateIssued = dateFormatter.date(from: dat) else { return }
+        
+        guard let invoiceNumber = invoiceData[3].type.getValue() else { return }
+        
+        guard let paymentType = invoiceDescription[0].type.getValue() else { return }
+        guard let paymentFootnote = invoiceDescription[1].type.getValue() else { return }
+        
+        invoice?.number = invoiceNumber
+        invoice?.createdAt = dateTimeCreated
+        invoice?.date = dateIssued
+        invoice?.footNote = paymentFootnote
+        invoice?.paymentType = paymentType
+        invoice?.amount = 10280.80
+        
+        invoiceItems.forEach { item in
+            guard let invoiceItem = item.type.getInvoiceItem() else { return }
+            invoice?.invoiceItems.append(invoiceItem)
+        }
     }
 }
 
@@ -181,7 +221,7 @@ extension AddInvoiceViewController: UITextFieldDelegate {
         return IndexPath(row: row, section: section)
     }
     
-    private func processInvoiceValue(from textField: UITextField, for item: InvoiceItem) {
+    private func processInvoiceValue(from textField: UITextField, for item: InvoiceItemModel) {
         // get row in which is textfield
         let row = textField.tag % 100
         
@@ -193,21 +233,21 @@ extension AddInvoiceViewController: UITextFieldDelegate {
         switch column  {
         case 1:
             guard let text = textField.text, let amount = Int(text) else { return }
-            let newValue = InvoiceItem(description: item.description, amount: amount, price: item.price, totalAmount: item.totalAmount, discountPercentage: nil)
+            let newValue = InvoiceItemModel(description: item.description, amount: amount, price: item.price, totalAmount: item.totalAmount, discountPercentage: nil)
             items[1][row].type = ItemType.invoiceItem(item: newValue)
             if let cell = tableView.cellForRow(at: getIndexPath(fromTag: textField.tag)) as? InvoiceItemTableViewCell {
                 cell.priceTextField.becomeFirstResponder()
             }
         case 2:
             guard let text = textField.text, let number = currencyFormatter.number(from: text) else { return }
-            let newValue = InvoiceItem(description: item.description, amount: item.amount, price: number.doubleValue, totalAmount: item.totalAmount, discountPercentage: nil)
+            let newValue = InvoiceItemModel(description: item.description, amount: item.amount, price: number.doubleValue, totalAmount: item.totalAmount, discountPercentage: nil)
             items[1][row].type = ItemType.invoiceItem(item: newValue)
             if let cell = tableView.cellForRow(at: getIndexPath(fromTag: textField.tag)) as? InvoiceItemTableViewCell {
                 cell.totalAmountTextField.becomeFirstResponder()
             }
         case 3:
             guard let text = textField.text, let number = currencyFormatter.number(from: text) else { return }
-            let newValue = InvoiceItem(description: item.description, amount: item.amount, price: item.price, totalAmount: number.doubleValue, discountPercentage: nil)
+            let newValue = InvoiceItemModel(description: item.description, amount: item.amount, price: item.price, totalAmount: number.doubleValue, discountPercentage: nil)
             items[1][row].type = ItemType.invoiceItem(item: newValue)
         default:
             return

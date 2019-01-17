@@ -32,7 +32,7 @@ class InvoiceItemTableViewCell: UITableViewCell {
         currencyFormatter.minimumIntegerDigits = 1
     }
 
-    func setup(with invoiceItem: InvoiceItem) {
+    func setup(with invoiceItem: InvoiceItemModel) {
         // TODO: item description
 //        descriptionTextView.text = invoiceItem.description
         priceTextField.text = currencyFormatter.string(from: NSNumber(value: invoiceItem.price))

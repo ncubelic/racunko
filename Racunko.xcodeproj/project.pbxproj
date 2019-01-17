@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2DDB2F7E21E0B6FB00429FA2 /* InvoiceItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB2F7C21E0B6FB00429FA2 /* InvoiceItemHeader.swift */; };
 		2DDB2F7F21E0B6FB00429FA2 /* InvoiceItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB2F7D21E0B6FB00429FA2 /* InvoiceItemHeader.xib */; };
+		934CDC9E21F07A8300C8B197 /* InvoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */; };
 		9351ED0E21395FF7006CEDAC /* AddInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */; };
 		9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */; };
 		9380B6692147AB3900C39838 /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6682147AB3900C39838 /* PDFGenerator.swift */; };
@@ -41,12 +42,13 @@
 		93E551B621DF7EFC0090DAD8 /* AddInvoiceLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E551B521DF7EFC0090DAD8 /* AddInvoiceLabelCell.swift */; };
 		93E551B921DF86D80090DAD8 /* InvoiceItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E551B721DF86D80090DAD8 /* InvoiceItemTableViewCell.xib */; };
 		93E551BA21DF86D80090DAD8 /* InvoiceItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E551B821DF86D80090DAD8 /* InvoiceItemTableViewCell.swift */; };
-		93E551BC21DF8CDD0090DAD8 /* InvoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E551BB21DF8CDD0090DAD8 /* InvoiceItem.swift */; };
+		93E551BC21DF8CDD0090DAD8 /* InvoiceItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E551BB21DF8CDD0090DAD8 /* InvoiceItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2DDB2F7C21E0B6FB00429FA2 /* InvoiceItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItemHeader.swift; sourceTree = "<group>"; };
 		2DDB2F7D21E0B6FB00429FA2 /* InvoiceItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceItemHeader.xib; sourceTree = "<group>"; };
+		934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItem.swift; sourceTree = "<group>"; };
 		9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceViewController.swift; sourceTree = "<group>"; };
 		9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCoordinator.swift; sourceTree = "<group>"; };
 		9380B6682147AB3900C39838 /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
@@ -81,7 +83,7 @@
 		93E551B521DF7EFC0090DAD8 /* AddInvoiceLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceLabelCell.swift; sourceTree = "<group>"; };
 		93E551B721DF86D80090DAD8 /* InvoiceItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceItemTableViewCell.xib; sourceTree = "<group>"; };
 		93E551B821DF86D80090DAD8 /* InvoiceItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItemTableViewCell.swift; sourceTree = "<group>"; };
-		93E551BB21DF8CDD0090DAD8 /* InvoiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItem.swift; sourceTree = "<group>"; };
+		93E551BB21DF8CDD0090DAD8 /* InvoiceItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +124,7 @@
 				9380B66A2147AB4000C39838 /* PDF generator */,
 				93E551B721DF86D80090DAD8 /* InvoiceItemTableViewCell.xib */,
 				93E551B821DF86D80090DAD8 /* InvoiceItemTableViewCell.swift */,
-				93E551BB21DF8CDD0090DAD8 /* InvoiceItem.swift */,
+				93E551BB21DF8CDD0090DAD8 /* InvoiceItemModel.swift */,
 				2DDB2F7C21E0B6FB00429FA2 /* InvoiceItemHeader.swift */,
 				2DDB2F7D21E0B6FB00429FA2 /* InvoiceItemHeader.xib */,
 			);
@@ -152,6 +154,7 @@
 			children = (
 				9380B6942148F6AE00C39838 /* Client.swift */,
 				9380B696214937E900C39838 /* Invoice.swift */,
+				934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				9380B6952148F6AE00C39838 /* Client.swift in Sources */,
 				93E551B421DF7EDB0090DAD8 /* AddInvoiceTextFieldCell.swift in Sources */,
 				9351ED0E21395FF7006CEDAC /* AddInvoiceViewController.swift in Sources */,
+				934CDC9E21F07A8300C8B197 /* InvoiceItem.swift in Sources */,
 				93B687C321303BA100591C4E /* ClientTableViewCell.swift in Sources */,
 				93B687BF213038D200591C4E /* ClientListViewController.swift in Sources */,
 				93B687A02130312300591C4E /* AppDelegate.swift in Sources */,
@@ -302,7 +306,7 @@
 				93B687C92130419A00591C4E /* InvoiceViewController.swift in Sources */,
 				93B687C721303ECA00591C4E /* UIStoryboard+Extension.swift in Sources */,
 				93E551BA21DF86D80090DAD8 /* InvoiceItemTableViewCell.swift in Sources */,
-				93E551BC21DF8CDD0090DAD8 /* InvoiceItem.swift in Sources */,
+				93E551BC21DF8CDD0090DAD8 /* InvoiceItemModel.swift in Sources */,
 				9380B697214937E900C39838 /* Invoice.swift in Sources */,
 				2DDB2F7E21E0B6FB00429FA2 /* InvoiceItemHeader.swift in Sources */,
 			);

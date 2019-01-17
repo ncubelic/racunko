@@ -70,10 +70,19 @@ class CoreDataManager {
     func addInvoice(_ invoiceModel: InvoiceModel, for client: Client) {
         let invoice = Invoice(context: persistentContainer.viewContext)
         invoice.number = invoiceModel.number
-        invoice.amount = invoiceModel.amount
+        invoice.totalAmount = invoiceModel.amount
         invoice.createdAt = invoiceModel.createdAt
         invoice.date = invoiceModel.date
         invoice.client = client
+        
+        invoiceModel.invoiceItems.forEach { invoiceItemModel in
+            let invoiceItem = InvoiceItem(context: persistentContainer.viewContext)
+            invoiceItem.title = invoiceItemModel.description
+            invoiceItem.amount = Int16(invoiceItemModel.amount)
+            invoiceItem.price = invoiceItemModel.price
+            invoiceItem.totalPrice = invoiceItemModel.totalAmount
+            invoice.addToInvoiceItems(invoiceItem)
+        }
         saveContext()
     }
     

@@ -15,4 +15,21 @@ struct InvoiceModel {
     var amount: Double
     var date: Date
     var company: Company
+    var paymentType: String
+    var footNote: String
+    var invoiceItems: [InvoiceItemModel] = []
+}
+
+extension InvoiceModel {
+    
+    init(client: Client) {
+        self.number = ""
+        self.createdAt = Date()
+        self.amount = 0
+        self.date = Date()
+        let company = Company(name: client.name ?? "", oib: Int(client.oib), address: client.address, zip: Int(client.zip), city: client.city ?? "")
+        self.company = company
+        self.paymentType = "Transakcijski račun"
+        self.footNote = ""
+    }
 }

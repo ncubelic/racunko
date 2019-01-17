@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct InvoiceItem {
+struct InvoiceItemModel {
     
     var description: String
     var amount: Int
@@ -17,7 +17,7 @@ struct InvoiceItem {
     var discountPercentage: Int? = 0
 }
 
-extension InvoiceItem {
+extension InvoiceItemModel {
     
     init() {
         self.description = "Naziv usluge"

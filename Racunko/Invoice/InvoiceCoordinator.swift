@@ -41,6 +41,10 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
     private func showAddInvoice(for client: Client) {
         let addInvoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(AddInvoiceViewController.self)
         addInvoiceVC.delegate = self
+        
+        let invoiceModel = InvoiceModel(client: client)
+        
+        addInvoiceVC.invoice = invoiceModel
         let navVC = UINavigationController(rootViewController: addInvoiceVC)
         rootViewController.present(navVC, animated: true, completion: nil)
     }
@@ -65,7 +69,12 @@ extension InvoiceCoordinator: AddInvoiceViewControllerDelegate {
         rootViewController.dismiss(animated: true, completion: nil)
     }
     
-    func save(_ invoice: Invoice) {
+    func save(_ invoice: InvoiceModel) {
+        guard let client = client else {
+            print("client is not selected (nil)")
+            return
+        }
+        dependencyManager.coreDataManager.addInvoice(invoice, for: client)
         rootViewController.dismiss(animated: true, completion: nil)
     }
 }
