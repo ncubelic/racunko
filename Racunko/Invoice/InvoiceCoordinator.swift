@@ -55,6 +55,10 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
 
 extension InvoiceCoordinator: InvoiceListViewControllerDelegate {
     
+    func removeInvoice(_ invoice: Invoice) {
+        dependencyManager.coreDataManager.deleteInvoice(invoice)
+    }
+    
     func addNewInvoice(for client: Client) {
         showAddInvoice(for: client)
     }

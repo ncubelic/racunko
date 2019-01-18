@@ -86,6 +86,12 @@ class CoreDataManager {
         saveContext()
     }
     
+    /// Delete invoice
+    func deleteInvoice(_ invoice: Invoice) {
+        persistentContainer.viewContext.delete(invoice)
+        saveContext()
+    }
+    
     /// Get list of invoices by Client
     func getInvoices(for client: Client) -> [Invoice] {
         let fetchRequest: NSFetchRequest<Invoice> = Invoice.fetchRequest()

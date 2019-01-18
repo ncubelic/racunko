@@ -129,13 +129,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F6-st-NCv">
-                                                    <rect key="frame" x="15" y="11.666666666666664" width="38" height="21"/>
+                                                    <rect key="frame" x="15.000000000000004" y="12.666666666666666" width="39.333333333333343" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Placeholder" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEw-ir-0Xn">
-                                                    <rect key="frame" x="63" y="12" width="297" height="20"/>
+                                                    <rect key="frame" x="64.333333333333343" y="13" width="295.66666666666663" height="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="PTSans-Regular" family="PT Sans" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -241,11 +241,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CjU-Hd-OEg">
-                                                    <rect key="frame" x="327" y="20.000000000000004" width="33" height="35.333333333333343"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="CjU-Hd-OEg">
+                                                    <rect key="frame" x="70" y="20.000000000000004" width="290" height="35.333333333333343"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAp-rN-JHt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="33" height="18.333333333333332"/>
+                                                            <rect key="frame" x="257" y="0.0" width="33" height="18.333333333333332"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="9Jp-Ve-XsW"/>
                                                             </constraints>
@@ -254,7 +254,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feb-g5-mNi">
-                                                            <rect key="frame" x="0.0" y="18.333333333333336" width="33" height="17"/>
+                                                            <rect key="frame" x="259" y="18.333333333333336" width="31" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="zWr-S2-5Le"/>
                                                             </constraints>
@@ -263,9 +263,12 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="bDe-xb-1IJ"/>
+                                                    </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozR-0a-Wh4">
-                                                    <rect key="frame" x="15" y="26.666666666666671" width="297" height="22"/>
+                                                    <rect key="frame" x="15" y="26.666666666666671" width="40" height="22"/>
                                                     <fontDescription key="fontDescription" name="PTSans-Bold" family="PT Sans" pointSize="17"/>
                                                     <color key="textColor" name="PrimaryText"/>
                                                     <nil key="highlightedColor"/>

@@ -10,6 +10,7 @@ import UIKit
 
 protocol InvoiceListViewControllerDelegate {
     func addNewInvoice(for client: Client)
+    func removeInvoice(_ invoice: Invoice)
 }
 
 class InvoiceListViewController: UIViewController {

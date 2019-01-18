@@ -22,6 +22,7 @@ class AddInvoiceViewController: UIViewController {
     var delegate: AddInvoiceViewControllerDelegate?
     
     var invoice: InvoiceModel?
+    var mutableInvoice: InvoiceModel?
     
     var items = [
         [
@@ -65,9 +66,9 @@ class AddInvoiceViewController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        guard let invoice = invoice else { return }
         transformInvoiceData()
-        delegate?.save(invoice)
+        guard let mutableInvoice = mutableInvoice else { return }
+        delegate?.save(mutableInvoice)
     }
     
     private func transformInvoiceData() {
@@ -103,6 +104,7 @@ class AddInvoiceViewController: UIViewController {
             guard let invoiceItem = item.type.getInvoiceItem() else { return }
             invoice?.invoiceItems.append(invoiceItem)
         }
+        mutableInvoice = invoice
     }
 }
 

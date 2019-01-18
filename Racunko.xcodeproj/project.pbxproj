@@ -113,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				93B687A32130312300591C4E /* Invoice.storyboard */,
+				9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */,
 				93B687C82130419A00591C4E /* InvoiceViewController.swift */,
 				93B687CA213042FD00591C4E /* InvoiceListViewController.swift */,
 				93B687CC213044F400591C4E /* InvoiceTableViewCell.swift */,
@@ -120,7 +121,6 @@
 				9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */,
 				93E551B321DF7EDB0090DAD8 /* AddInvoiceTextFieldCell.swift */,
 				93E551B521DF7EFC0090DAD8 /* AddInvoiceLabelCell.swift */,
-				9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */,
 				9380B66A2147AB4000C39838 /* PDF generator */,
 				93E551B721DF86D80090DAD8 /* InvoiceItemTableViewCell.xib */,
 				93E551B821DF86D80090DAD8 /* InvoiceItemTableViewCell.swift */,
