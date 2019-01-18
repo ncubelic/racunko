@@ -53,3 +53,42 @@ extension InvoiceListViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension InvoiceListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            confirmDeletion {
+                self.deleteInvoice(at: indexPath)
+            }
+        }
+    }
+    
+    private func deleteInvoice(at indexPath: IndexPath) {
+        let invoice = items2[indexPath.row]
+        delegate?.removeInvoice(invoice)
+        items2.remove(at: indexPath.row)
+        
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+    }
+    
+    private func confirmDeletion(handler: @escaping () -> ()) {
+        let alert = UIAlertController(title: "Želiš li izbrisati?", message: "Jesi li siguran da želiš izbrisati", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Odustani", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Izbriši", style: .destructive) { _ in handler() })
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
