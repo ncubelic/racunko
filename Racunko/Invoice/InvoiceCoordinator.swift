@@ -40,11 +40,11 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
     
     private func showAddInvoice(for client: Client) {
         let addInvoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(AddInvoiceViewController.self)
-        addInvoiceVC.delegate = self
-        
         let invoiceModel = InvoiceModel(client: client)
+        addInvoiceVC.delegate = self
+        addInvoiceVC.setup(with: invoiceModel)
+//        addInvoiceVC.invoice = invoiceModel
         
-        addInvoiceVC.invoice = invoiceModel
         let navVC = UINavigationController(rootViewController: addInvoiceVC)
         rootViewController.present(navVC, animated: true, completion: nil)
     }

@@ -21,11 +21,7 @@ class InvoiceListViewController: UIViewController {
     var currentCompany: Company?
     var currentClient: Client?
     
-    var items: [InvoiceModel] = [
-//        InvoiceModel(number: "1-1-1", createdAt: Date(), amount: 14960, date: Date(), company: Company(name: "Ingemark d.o.o.", oib: 1234123, address: "Vukovarska 269d", zip: 10000, city: "Zagreb")),
-//        InvoiceModel(number: "1-1-1", createdAt: Date(), amount: 14960, date: Date(), company: Company(name: "Ingemark d.o.o.", oib: 1234123, address: "Vukovarska 269d", zip: 10000, city: "Zagreb")),
-//        InvoiceModel(number: "1-1-1", createdAt: Date(), amount: 14960, date: Date(), company: Company(name: "Ingemark d.o.o.", oib: 1234123, address: "Vukovarska 269d", zip: 10000, city: "Zagreb"))
-    ]
+    var items: [InvoiceModel] = []
     
     var items2: [Invoice] = []
     

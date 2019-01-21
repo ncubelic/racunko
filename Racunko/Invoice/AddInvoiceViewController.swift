@@ -14,6 +14,8 @@ protocol AddInvoiceViewControllerDelegate {
 }
 
 let DateTimeFormatter = DateFormatter()
+let DateFormat = DateFormatter()
+let TimeFormat = DateFormatter()
 
 class AddInvoiceViewController: UIViewController {
     
@@ -27,7 +29,7 @@ class AddInvoiceViewController: UIViewController {
     var items = [
         [
             Item(title: "Datum izdavanja", type: ItemType.textField(placeholder: "dd.MM.yyyy.", text: nil)),
-            Item(title: "Vrijeme izdavanja", type: ItemType.textField(placeholder: "HH:mm:SS.", text: nil)),
+            Item(title: "Vrijeme izdavanja", type: ItemType.textField(placeholder: "HH:mm:SS", text: nil)),
             Item(title: "Datum isporuke", type: ItemType.textField(placeholder: "dd.MM.yyyy.", text: nil)),
             Item(title: "Broj računa", type: ItemType.textField(placeholder: "#-#-#", text: nil)),
             Item(title: "Datum dospijeća", type: ItemType.textField(placeholder: "dd.MM.yyyy.", text: nil))
@@ -52,7 +54,24 @@ class AddInvoiceViewController: UIViewController {
         tableView.register(UINib(nibName: "InvoiceItemTableViewCell", bundle: nil), forCellReuseIdentifier: "InvoiceItemTableViewCell")
         tableView.register(UINib(nibName: "InvoiceItemHeader", bundle: nil), forCellReuseIdentifier: "InvoiceItemHeader")
         
-        DateTimeFormatter.dateFormat = "dd.MM.yyyy. HH:mm:SS."
+        DateTimeFormatter.dateFormat = "dd.MM.yyyy. HH:mm:SS"
+        DateFormat.dateFormat = "dd.MM.yyyy."
+        TimeFormat.dateFormat = "HH:mm:SS"
+    }
+    
+    func setup(with invoiceModel: InvoiceModel) {
+        self.invoice = invoiceModel
+        var invoiceData = items[0]
+        invoiceData[0].type = ItemType.textField(placeholder: "dd.MM.yyyy.", text: DateFormat.string(from: invoiceModel.createdAt))
+        invoiceData[1].type = ItemType.textField(placeholder: "HH:mm:SS", text: TimeFormat.string(from: invoiceModel.createdAt))
+        invoiceData[2].type = ItemType.textField(placeholder: "dd.MM.yyyy.", text: DateFormat.string(from: invoiceModel.date))
+        invoiceData[3].type = ItemType.textField(placeholder: "#-#-#", text: invoiceModel.number)
+        invoiceData[4].type = ItemType.textField(placeholder: "dd.MM.yyyy.", text: DateFormat.string(from: invoiceModel.date))
+    
+        // TODO: load invoice description data from model
+        
+        items[0] = invoiceData
+//        tableView.reloadData()
     }
     
     private func addInvoiceItem() {
@@ -69,6 +88,10 @@ class AddInvoiceViewController: UIViewController {
         transformInvoiceData()
         guard let mutableInvoice = mutableInvoice else { return }
         delegate?.save(mutableInvoice)
+    }
+    
+    private func transform(invoiceModel: InvoiceModel) {
+        
     }
     
     private func transformInvoiceData() {
@@ -98,11 +121,12 @@ class AddInvoiceViewController: UIViewController {
         invoice?.date = dateIssued
         invoice?.footNote = paymentFootnote
         invoice?.paymentType = paymentType
-        invoice?.amount = 10280.80
+        invoice?.amount = 0
         
         invoiceItems.forEach { item in
             guard let invoiceItem = item.type.getInvoiceItem() else { return }
             invoice?.invoiceItems.append(invoiceItem)
+            invoice?.amount += invoiceItem.totalAmount
         }
         mutableInvoice = invoice
     }

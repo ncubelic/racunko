@@ -23,7 +23,7 @@ struct InvoiceModel {
 extension InvoiceModel {
     
     init(client: Client) {
-        self.number = ""
+        self.number = "1-1-1"
         self.createdAt = Date()
         self.amount = 0
         self.date = Date()
