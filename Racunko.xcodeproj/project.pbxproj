@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		2DDB2F7E21E0B6FB00429FA2 /* InvoiceItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB2F7C21E0B6FB00429FA2 /* InvoiceItemHeader.swift */; };
 		2DDB2F7F21E0B6FB00429FA2 /* InvoiceItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB2F7D21E0B6FB00429FA2 /* InvoiceItemHeader.xib */; };
+		930F38D521F5D41200D8471C /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 930F38D121F5D41100D8471C /* template.html */; };
+		930F38D621F5D41200D8471C /* data.js in Resources */ = {isa = PBXBuildFile; fileRef = 930F38D221F5D41200D8471C /* data.js */; };
+		930F38D721F5D41200D8471C /* img in Resources */ = {isa = PBXBuildFile; fileRef = 930F38D321F5D41200D8471C /* img */; };
+		930F38D821F5D41200D8471C /* css in Resources */ = {isa = PBXBuildFile; fileRef = 930F38D421F5D41200D8471C /* css */; };
+		930F38DB21F5FB4100D8471C /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38DA21F5FB4000D8471C /* PreviewViewController.swift */; };
+		930F38DE21F610BA00D8471C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38DD21F610BA00D8471C /* HomeCoordinator.swift */; };
+		930F38E021F6115D00D8471C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38DF21F6115D00D8471C /* HomeViewController.swift */; };
+		930F38E221F6116500D8471C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930F38E121F6116500D8471C /* Home.storyboard */; };
+		930F38E421F614D900D8471C /* SplitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38E321F614D900D8471C /* SplitCoordinator.swift */; };
 		934CDC9E21F07A8300C8B197 /* InvoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */; };
 		9351ED0E21395FF7006CEDAC /* AddInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */; };
 		9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */; };
@@ -48,6 +57,15 @@
 /* Begin PBXFileReference section */
 		2DDB2F7C21E0B6FB00429FA2 /* InvoiceItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItemHeader.swift; sourceTree = "<group>"; };
 		2DDB2F7D21E0B6FB00429FA2 /* InvoiceItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceItemHeader.xib; sourceTree = "<group>"; };
+		930F38D121F5D41100D8471C /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
+		930F38D221F5D41200D8471C /* data.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = data.js; sourceTree = "<group>"; };
+		930F38D321F5D41200D8471C /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
+		930F38D421F5D41200D8471C /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; path = css; sourceTree = "<group>"; };
+		930F38DA21F5FB4000D8471C /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		930F38DD21F610BA00D8471C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		930F38DF21F6115D00D8471C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		930F38E121F6116500D8471C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		930F38E321F614D900D8471C /* SplitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitCoordinator.swift; sourceTree = "<group>"; };
 		934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItem.swift; sourceTree = "<group>"; };
 		9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceViewController.swift; sourceTree = "<group>"; };
 		9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCoordinator.swift; sourceTree = "<group>"; };
@@ -97,6 +115,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		930F38D921F5D41F00D8471C /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				930F38D421F5D41200D8471C /* css */,
+				930F38D221F5D41200D8471C /* data.js */,
+				930F38D321F5D41200D8471C /* img */,
+				930F38D121F5D41100D8471C /* template.html */,
+			);
+			path = HTML;
+			sourceTree = "<group>";
+		};
+		930F38DC21F6109900D8471C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				930F38DD21F610BA00D8471C /* HomeCoordinator.swift */,
+				930F38DF21F6115D00D8471C /* HomeViewController.swift */,
+				930F38E121F6116500D8471C /* Home.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		9351ED0B21395FBA006CEDAC /* Client */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +166,7 @@
 				93E551BB21DF8CDD0090DAD8 /* InvoiceItemModel.swift */,
 				2DDB2F7C21E0B6FB00429FA2 /* InvoiceItemHeader.swift */,
 				2DDB2F7D21E0B6FB00429FA2 /* InvoiceItemHeader.xib */,
+				930F38DA21F5FB4000D8471C /* PreviewViewController.swift */,
 			);
 			path = Invoice;
 			sourceTree = "<group>";
@@ -134,6 +174,7 @@
 		9380B66A2147AB4000C39838 /* PDF generator */ = {
 			isa = PBXGroup;
 			children = (
+				930F38D921F5D41F00D8471C /* HTML */,
 				9380B6682147AB3900C39838 /* PDFGenerator.swift */,
 			);
 			path = "PDF generator";
@@ -184,9 +225,11 @@
 				93B687B82130343300591C4E /* DependencyManager.swift */,
 				93B687C421303C1B00591C4E /* Company.swift */,
 				93B687C621303ECA00591C4E /* UIStoryboard+Extension.swift */,
+				930F38E321F614D900D8471C /* SplitCoordinator.swift */,
 				9380B66D2148F4ED00C39838 /* Core Data */,
 				9351ED0B21395FBA006CEDAC /* Client */,
 				9351ED0C21395FCB006CEDAC /* Invoice */,
+				930F38DC21F6109900D8471C /* Home */,
 				93B687B12130336200591C4E /* Supporting Files */,
 			);
 			path = Racunko;
@@ -263,13 +306,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				930F38D821F5D41200D8471C /* css in Resources */,
 				93B687D1213048F400591C4E /* PTSans-Regular.ttf in Resources */,
+				930F38E221F6116500D8471C /* Home.storyboard in Resources */,
 				93B687AA2130312400591C4E /* LaunchScreen.storyboard in Resources */,
 				93E551B921DF86D80090DAD8 /* InvoiceItemTableViewCell.xib in Resources */,
 				2DDB2F7F21E0B6FB00429FA2 /* InvoiceItemHeader.xib in Resources */,
 				93B687D0213048F200591C4E /* PTSans-Bold.ttf in Resources */,
 				93B687BB2130350200591C4E /* Colors.xcassets in Resources */,
 				93B687A72130312400591C4E /* Assets.xcassets in Resources */,
+				930F38D721F5D41200D8471C /* img in Resources */,
+				930F38D521F5D41200D8471C /* template.html in Resources */,
+				930F38D621F5D41200D8471C /* data.js in Resources */,
 				93B687A52130312300591C4E /* Invoice.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,11 +330,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9380B6692147AB3900C39838 /* PDFGenerator.swift in Sources */,
+				930F38E421F614D900D8471C /* SplitCoordinator.swift in Sources */,
 				93B687B92130343300591C4E /* DependencyManager.swift in Sources */,
+				930F38E021F6115D00D8471C /* HomeViewController.swift in Sources */,
 				93E551B621DF7EFC0090DAD8 /* AddInvoiceLabelCell.swift in Sources */,
 				93B687D52130536800591C4E /* AddClientViewController.swift in Sources */,
 				9380B66F2148F50600C39838 /* CoreDataManager.swift in Sources */,
 				93B687B7213033A400591C4E /* Coordinator.swift in Sources */,
+				930F38DB21F5FB4100D8471C /* PreviewViewController.swift in Sources */,
 				9380B6932148F5DF00C39838 /* Invoice.xcdatamodeld in Sources */,
 				93B687B6213033A400591C4E /* AppCoordinator.swift in Sources */,
 				9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */,
@@ -305,6 +356,7 @@
 				93B687CD213044F400591C4E /* InvoiceTableViewCell.swift in Sources */,
 				93B687C92130419A00591C4E /* InvoiceViewController.swift in Sources */,
 				93B687C721303ECA00591C4E /* UIStoryboard+Extension.swift in Sources */,
+				930F38DE21F610BA00D8471C /* HomeCoordinator.swift in Sources */,
 				93E551BA21DF86D80090DAD8 /* InvoiceItemTableViewCell.swift in Sources */,
 				93E551BC21DF8CDD0090DAD8 /* InvoiceItemModel.swift in Sources */,
 				9380B697214937E900C39838 /* Invoice.swift in Sources */,

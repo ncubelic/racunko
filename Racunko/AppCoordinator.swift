@@ -42,12 +42,16 @@ class AppCoordinator: NSObject, Coordinator {
     
     private func showMainFlow() {
         let splitVC = UISplitViewController()
-        splitVC.view.backgroundColor = UIColor(named: "SecondaryDark")
-        rootViewController = splitVC
+        let splitCoordinator = SplitViewCoordinator(rootViewController: splitVC, dependencyManager: dependencyManager)
+        addChildCoordinator(splitCoordinator)
+        splitCoordinator.start()
 
-        let clientCoordinator = ClientCoordinator(rootViewController: splitVC, dependencyManager: dependencyManager)
-        clientCoordinator.start()
-        addChildCoordinator(clientCoordinator)
+//        let clientCoordinator = ClientCoordinator(rootViewController: splitVC, dependencyManager: dependencyManager)
+//        clientCoordinator.start()
+//        addChildCoordinator(clientCoordinator)
+
+        rootViewController = splitVC
+        splitVC.view.backgroundColor = UIColor(named: "SecondaryDark")
         
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()

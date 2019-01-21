@@ -19,19 +19,21 @@ class ClientCoordinator: NSObject, SplitCoordinator {
     private var detailsNavigationController = UINavigationController()
     
     private var clientListVC: ClientListViewController
+    private var previewVC: PreviewViewController
     
     required init(rootViewController: UISplitViewController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
         self.dependencyManager = dependencyManager
         clientListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(ClientListViewController.self)
+        previewVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(PreviewViewController.self)
     }
     
     func start() {
         clientListVC.delegate = self
         clientListVC.items = dependencyManager.coreDataManager.getClients()
-        masterNavigationController.setViewControllers([clientListVC], animated: true)
-        detailsNavigationController.setViewControllers([], animated: true)
-
+        masterNavigationController.setViewControllers([clientListVC], animated: false)
+        detailsNavigationController.setViewControllers([previewVC], animated: false)
+        
         rootViewController.viewControllers = [masterNavigationController, detailsNavigationController]
     }
 }
@@ -43,13 +45,10 @@ extension ClientCoordinator: ClientListViewControllerDelegate, UIPopoverPresenta
     
     func didSelectCompany(_ client: Client) {
         let invoiceCoordinator = InvoiceCoordinator(rootViewController: masterNavigationController, dependencyManager: dependencyManager)
-        
-//        let invoiceListVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceListViewController.self)
-//        invoiceListVC.items2 = dependencyManager.coreDataManager.getInvoices(for: client)
+        invoiceCoordinator.delegate = self
         invoiceCoordinator.client = client
         invoiceCoordinator.start()
         childCoordinators.append(invoiceCoordinator)
-//        masterNavigationController.pushViewController(invoiceListVC, animated: true)
     }
     
     func addNewClient(_ barButton: UIBarButtonItem) {
@@ -78,6 +77,20 @@ extension ClientCoordinator: AddClientViewControllerDelegate {
         rootViewController.dismiss(animated: true, completion: nil)
         dependencyManager.coreDataManager.addClient(client)
         clientListVC.updateClients(with: dependencyManager.coreDataManager.getClients()) 
+    }
+}
+
+
+// MARK: - Show HTML preview
+
+extension ClientCoordinator: InvoiceCoordinatorDelegate {
+    
+    func shouldShow(invoice: Invoice) {
+        let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
+        let pdfGenerator = PDFGenerator(invoice: invoice)
+        invoiceVC.HTMLContent = pdfGenerator.generate()
+        invoiceVC.title = invoice.number
+        detailsNavigationController.setViewControllers([invoiceVC], animated: false)
     }
 }
 

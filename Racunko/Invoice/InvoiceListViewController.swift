@@ -11,6 +11,7 @@ import UIKit
 protocol InvoiceListViewControllerDelegate {
     func addNewInvoice(for client: Client)
     func removeInvoice(_ invoice: Invoice)
+    func didSelect(_ invoice: Invoice)
 }
 
 class InvoiceListViewController: UIViewController {
@@ -51,6 +52,15 @@ extension InvoiceListViewController: UITableViewDataSource {
 }
 
 extension InvoiceListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let invoice = items2[indexPath.row]
+        delegate?.didSelect(invoice)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

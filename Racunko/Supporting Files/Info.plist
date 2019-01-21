@@ -28,7 +28,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Invoice</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Invoice</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol InvoiceCoordinatorDelegate: class {
+    func shouldShow(invoice: Invoice)
+}
+
 class InvoiceCoordinator: NSObject, NavigationCoordinator {
 
     var rootViewController: UINavigationController
@@ -16,6 +20,7 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
     var dependencyManager: DependencyManager
     
     var client: Client?
+    weak var delegate: InvoiceCoordinatorDelegate?
     
     private var invoiceListVC: InvoiceListViewController
     
@@ -43,10 +48,13 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
         let invoiceModel = InvoiceModel(client: client)
         addInvoiceVC.delegate = self
         addInvoiceVC.setup(with: invoiceModel)
-//        addInvoiceVC.invoice = invoiceModel
         
         let navVC = UINavigationController(rootViewController: addInvoiceVC)
         rootViewController.present(navVC, animated: true, completion: nil)
+    }
+    
+    private func showPreview(for invoice: Invoice) {
+        delegate?.shouldShow(invoice: invoice)
     }
 }
 
@@ -61,6 +69,10 @@ extension InvoiceCoordinator: InvoiceListViewControllerDelegate {
     
     func addNewInvoice(for client: Client) {
         showAddInvoice(for: client)
+    }
+    
+    func didSelect(_ invoice: Invoice) {
+        showPreview(for: invoice)
     }
 }
 
