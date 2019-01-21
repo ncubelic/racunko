@@ -9,11 +9,17 @@
 import Foundation
 import UIKit
 
+protocol HomeCoordinatorDelegate: class {
+    func showClients()
+}
+
 class HomeCoordinator: NSObject, NavigationCoordinator {
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var dependencyManager: DependencyManager
+    
+    weak var delegate: HomeCoordinatorDelegate?
     
     required init(rootViewController: UINavigationController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
@@ -22,7 +28,24 @@ class HomeCoordinator: NSObject, NavigationCoordinator {
     
     func start() {
         let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiate(HomeViewController.self)
-        rootViewController.pushViewController(homeVC, animated: false)
+        homeVC.delegate = self
+        rootViewController.pushViewController(homeVC, animated: true)
     }
     
+}
+
+
+extension HomeCoordinator: HomeViewControllerDelegate {
+    
+    func showClientsScreen() {
+        delegate?.showClients()
+    }
+    
+    func showInvoicesScreen() {
+        print("unimplemented")
+    }
+    
+    func showSettingsScreen() {
+        print("unimplemented")
+    }
 }

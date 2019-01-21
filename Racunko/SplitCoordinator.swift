@@ -18,16 +18,43 @@ class SplitViewCoordinator: NSObject, SplitCoordinator {
     private var masterNavigationController = UINavigationController()
     private var detailsNavigationController = UINavigationController()
     
+    private var previewVC: PreviewViewController
+    
     required init(rootViewController: UISplitViewController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
         self.dependencyManager = dependencyManager
+        
+        previewVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(PreviewViewController.self)
     }
     
     func start() {
         let homeCoordinator = HomeCoordinator(rootViewController: masterNavigationController, dependencyManager: dependencyManager)
         addChildCoordinator(homeCoordinator)
         homeCoordinator.start()
+        homeCoordinator.delegate = self
         
+        detailsNavigationController.setViewControllers([previewVC], animated: false)
         rootViewController.viewControllers = [masterNavigationController, detailsNavigationController]
+    }
+}
+
+extension SplitViewCoordinator: HomeCoordinatorDelegate {
+    
+    func showClients() {
+        let clientCoordinator = ClientCoordinator(rootViewController: masterNavigationController, dependencyManager: dependencyManager)
+        addChildCoordinator(clientCoordinator)
+        clientCoordinator.delegate = self
+        clientCoordinator.start()
+    }
+}
+
+extension SplitViewCoordinator: ClientCoordinatorDelegate {
+    
+    func shouldPreview(_ invoice: Invoice) {
+        let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
+        let pdfGenerator = PDFGenerator(invoice: invoice)
+        invoiceVC.HTMLContent = pdfGenerator.generate()
+        invoiceVC.title = invoice.number
+        detailsNavigationController.setViewControllers([invoiceVC], animated: false)
     }
 }

@@ -8,8 +8,16 @@
 
 import UIKit
 
+protocol HomeViewControllerDelegate: class {
+    func showClientsScreen()
+    func showInvoicesScreen()
+    func showSettingsScreen()
+}
+
 class HomeViewController: UIViewController {
 
+    weak var delegate: HomeViewControllerDelegate?
+    
     let items: [[Item]] = [
         [
             Item(title: "Klijenti", type: ItemType.disclosure),
@@ -23,6 +31,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .clear
     }
 
 }
@@ -55,6 +65,18 @@ extension HomeViewController: UITableViewDataSource {
 
 
 extension HomeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0: delegate?.showClientsScreen()
+            case 1: delegate?.showInvoicesScreen()
+            default: break
+            }
+        default: delegate?.showSettingsScreen()
+        }
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
