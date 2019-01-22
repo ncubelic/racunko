@@ -19,7 +19,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Clients-->
+        <!--Klijenti-->
         <scene sceneID="9Gi-SO-VDH">
             <objects>
                 <viewController storyboardIdentifier="ClientListViewController" id="a0c-fX-h2U" customClass="ClientListViewController" customModule="Racunko" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,7 +92,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cq0-eo-1LY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Clients" largeTitleDisplayMode="always" id="wdo-T4-r1i">
+                    <navigationItem key="navigationItem" title="Klijenti" largeTitleDisplayMode="always" id="wdo-T4-r1i">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xbK-UE-nkd">
                             <color key="tintColor" name="PrimaryText"/>
                             <connections>
@@ -229,7 +229,7 @@
             </objects>
             <point key="canvasLocation" x="746" y="179"/>
         </scene>
-        <!--Invoices-->
+        <!--Računi-->
         <scene sceneID="da5-fe-446">
             <objects>
                 <viewController storyboardIdentifier="InvoiceListViewController" id="pP7-EO-o3m" customClass="InvoiceListViewController" customModule="Racunko" customModuleProvider="target" sceneMemberID="viewController">
@@ -312,7 +312,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Ql-gc-Nr4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Invoices" id="eLt-qP-8VU">
+                    <navigationItem key="navigationItem" title="Računi" id="eLt-qP-8VU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TLG-0q-cbB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -467,7 +467,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Izaberite račun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4k3-zc-pgT">
                                 <rect key="frame" x="110.33333333333333" y="393" width="154.33333333333337" height="26.333333333333314"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" name="PrimaryText"/>
+                                <color key="textColor" name="PrimaryDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -482,40 +482,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jC4-Tf-uQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3111" y="167"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="MYN-kx-zlf">
-            <objects>
-                <viewController id="vf6-7C-tQT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0CV-sY-GNY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="sps-4Y-kBU"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="TV6-gq-K5C"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ilm-pX-jM6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5247.1999999999998" y="150.73891625615764"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="6Oa-s6-4g4">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Ie-y6-0sY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jvg-Wn-6u8">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vf6-7C-tQT" kind="relationship" relationship="rootViewController" id="sns-Mz-Ppw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bdt-YU-m2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4304.8000000000002" y="150.73891625615764"/>
         </scene>
     </scenes>
     <resources>

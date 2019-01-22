@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+let CurrencyFormatter = NumberFormatter()
+let DateTimeFormatter = DateFormatter()
+let DateFormat = DateFormatter()
+let TimeFormat = DateFormatter()
+
 class AppCoordinator: NSObject, Coordinator {
 
     var window: UIWindow!
@@ -25,6 +30,7 @@ class AppCoordinator: NSObject, Coordinator {
 
     func start() {
         configureAppearance()
+        configureFormatters()
         
         if isLoggedIn() {
             showMainFlow()
@@ -45,10 +51,6 @@ class AppCoordinator: NSObject, Coordinator {
         let splitCoordinator = SplitViewCoordinator(rootViewController: splitVC, dependencyManager: dependencyManager)
         addChildCoordinator(splitCoordinator)
         splitCoordinator.start()
-
-//        let clientCoordinator = ClientCoordinator(rootViewController: splitVC, dependencyManager: dependencyManager)
-//        clientCoordinator.start()
-//        addChildCoordinator(clientCoordinator)
 
         rootViewController = splitVC
         splitVC.view.backgroundColor = UIColor(named: "SecondaryDark")
@@ -81,5 +83,21 @@ extension AppCoordinator {
         navbar.shadowImage = UIImage()
         navbar.setBackgroundImage(UIImage(), for: .default)
         navbar.backgroundColor = UIColor(named: "SecondaryDark")
+    }
+    
+    private func configureFormatters() {
+        CurrencyFormatter.numberStyle = .currency
+        CurrencyFormatter.locale = Locale(identifier: "hr_HR")
+        CurrencyFormatter.currencyCode = "HRK"
+        CurrencyFormatter.currencySymbol = "kn"
+        CurrencyFormatter.currencyDecimalSeparator = ","
+        CurrencyFormatter.currencyGroupingSeparator = "."
+        CurrencyFormatter.minimumFractionDigits = 2
+        CurrencyFormatter.maximumFractionDigits = 2
+        CurrencyFormatter.minimumIntegerDigits = 1
+        
+        DateTimeFormatter.dateFormat = "dd.MM.yyyy. HH:mm:SS"
+        DateFormat.dateFormat = "dd.MM.yyyy."
+        TimeFormat.dateFormat = "HH:mm:SS"
     }
 }

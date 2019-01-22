@@ -13,10 +13,6 @@ protocol AddInvoiceViewControllerDelegate {
     func save(_ invoice: InvoiceModel)
 }
 
-let DateTimeFormatter = DateFormatter()
-let DateFormat = DateFormatter()
-let TimeFormat = DateFormatter()
-
 class AddInvoiceViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -47,16 +43,12 @@ class AddInvoiceViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = 50.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 50
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
         
         tableView.register(UINib(nibName: "InvoiceItemTableViewCell", bundle: nil), forCellReuseIdentifier: "InvoiceItemTableViewCell")
         tableView.register(UINib(nibName: "InvoiceItemHeader", bundle: nil), forCellReuseIdentifier: "InvoiceItemHeader")
-        
-        DateTimeFormatter.dateFormat = "dd.MM.yyyy. HH:mm:SS"
-        DateFormat.dateFormat = "dd.MM.yyyy."
-        TimeFormat.dateFormat = "HH:mm:SS"
     }
     
     func setup(with invoiceModel: InvoiceModel) {
@@ -265,14 +257,14 @@ extension AddInvoiceViewController: UITextFieldDelegate {
                 cell.priceTextField.becomeFirstResponder()
             }
         case 2:
-            guard let text = textField.text, let number = currencyFormatter.number(from: text) else { return }
+            guard let text = textField.text, let number = CurrencyFormatter.number(from: text) else { return }
             let newValue = InvoiceItemModel(description: item.description, amount: item.amount, price: number.doubleValue, totalAmount: item.totalAmount, discountPercentage: nil)
             items[1][row].type = ItemType.invoiceItem(item: newValue)
             if let cell = tableView.cellForRow(at: getIndexPath(fromTag: textField.tag)) as? InvoiceItemTableViewCell {
                 cell.totalAmountTextField.becomeFirstResponder()
             }
         case 3:
-            guard let text = textField.text, let number = currencyFormatter.number(from: text) else { return }
+            guard let text = textField.text, let number = CurrencyFormatter.number(from: text) else { return }
             let newValue = InvoiceItemModel(description: item.description, amount: item.amount, price: item.price, totalAmount: number.doubleValue, discountPercentage: nil)
             items[1][row].type = ItemType.invoiceItem(item: newValue)
         default:

@@ -11,6 +11,7 @@ import UIKit
 
 protocol HomeCoordinatorDelegate: class {
     func showClients()
+    func showSettings()
 }
 
 class HomeCoordinator: NSObject, NavigationCoordinator {
@@ -30,7 +31,7 @@ class HomeCoordinator: NSObject, NavigationCoordinator {
         let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiate(HomeViewController.self)
         homeVC.delegate = self
         homeVC.title = "Računko"
-//        rootViewController.navigationItem.largeTitleDisplayMode = .always
+
         rootViewController.navigationBar.prefersLargeTitles = true
         rootViewController.pushViewController(homeVC, animated: true)
     }
@@ -49,6 +50,6 @@ extension HomeCoordinator: HomeViewControllerDelegate {
     }
     
     func showSettingsScreen() {
-        print("unimplemented")
+        delegate?.showSettings()
     }
 }

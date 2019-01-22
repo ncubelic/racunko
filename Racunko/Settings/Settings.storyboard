@@ -19,7 +19,7 @@
         <!--Settings View Controller-->
         <scene sceneID="dbC-3k-9M4">
             <objects>
-                <viewController id="3CS-k0-Ka4" customClass="SettingsViewController" customModule="Racunko" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="3CS-k0-Ka4" customClass="SettingsViewController" customModule="Racunko" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ryw-53-XbM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,6 +47,10 @@
                                         <color key="backgroundColor" name="PrimaryDark"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3CS-k0-Ka4" id="YrQ-mN-IID"/>
+                                    <outlet property="delegate" destination="3CS-k0-Ka4" id="FEf-qm-tmS"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" name="PrimaryDark"/>
@@ -58,6 +62,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oTt-qZ-PCr"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="mhb-Bv-r2Y" id="eN7-G2-ZA9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rue-QU-UC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

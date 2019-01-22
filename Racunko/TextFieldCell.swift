@@ -1,20 +1,20 @@
 //
-//  AddInvoiceTextFieldCell.swift
+//  TextFieldCell.swift
 //  Racunko
 //
-//  Created by Nikola on 04/01/2019.
+//  Created by Nikola on 22/01/2019.
 //  Copyright © 2019 Nikola. All rights reserved.
 //
 
 import UIKit
 
-class AddInvoiceTextFieldCell: UITableViewCell {
-    
+class TextFieldCell: UITableViewCell {
+
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
     
     func setup(with item: Item) {
@@ -25,4 +25,5 @@ class AddInvoiceTextFieldCell: UITableViewCell {
             textField.text = value
         }
     }
+    
 }

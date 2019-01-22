@@ -16,7 +16,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Home View Controller-->
+        <!--Računko-->
         <scene sceneID="Z5T-X1-omg">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="6eD-Tn-PBc" customClass="HomeViewController" customModule="Racunko" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,6 +62,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6ga-ck-vc4"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Računko" id="nW1-Iq-Z4E">
+                        <barButtonItem key="backBarButtonItem" title=" " id="rf4-o4-rEU"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRJ-RM-tLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

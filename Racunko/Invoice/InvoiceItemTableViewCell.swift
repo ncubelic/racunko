@@ -8,8 +8,6 @@
 
 import UIKit
 
-let currencyFormatter = NumberFormatter()
-
 class InvoiceItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var totalAmountTextField: UITextField!
@@ -20,24 +18,14 @@ class InvoiceItemTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        currencyFormatter.numberStyle = .currency
-        currencyFormatter.locale = Locale(identifier: "hr_HR")
-        currencyFormatter.currencyCode = "HRK"
-        currencyFormatter.currencySymbol = "kn"
-        currencyFormatter.currencyDecimalSeparator = ","
-        currencyFormatter.currencyGroupingSeparator = "."
-        currencyFormatter.minimumFractionDigits = 2
-        currencyFormatter.maximumFractionDigits = 2
-        currencyFormatter.minimumIntegerDigits = 1
     }
 
     func setup(with invoiceItem: InvoiceItemModel) {
         // TODO: item description
 //        descriptionTextView.text = invoiceItem.description
-        priceTextField.text = currencyFormatter.string(from: NSNumber(value: invoiceItem.price))
+        priceTextField.text = CurrencyFormatter.string(from: NSNumber(value: invoiceItem.price))
         amountTextField.text = String(invoiceItem.amount)
-        totalAmountTextField.text = currencyFormatter.string(from: NSNumber(value: invoiceItem.totalAmount))
+        totalAmountTextField.text = CurrencyFormatter.string(from: NSNumber(value: invoiceItem.totalAmount))
     }
     
 }

@@ -46,6 +46,11 @@ extension SplitViewCoordinator: HomeCoordinatorDelegate {
         clientCoordinator.delegate = self
         clientCoordinator.start()
     }
+    
+    func showSettings() {
+        let settingsCoordinator = SettingsCoordinator(rootViewController: detailsNavigationController, dependencyManager: dependencyManager)
+        settingsCoordinator.start()
+    }
 }
 
 extension SplitViewCoordinator: ClientCoordinatorDelegate {
@@ -53,7 +58,7 @@ extension SplitViewCoordinator: ClientCoordinatorDelegate {
     func shouldPreview(_ invoice: Invoice) {
         let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
         let pdfGenerator = PDFGenerator(invoice: invoice)
-        invoiceVC.HTMLContent = pdfGenerator.generate()
+        invoiceVC.HTMLContent = pdfGenerator.generateHTML()
         invoiceVC.title = invoice.number
         detailsNavigationController.setViewControllers([invoiceVC], animated: false)
     }

@@ -23,7 +23,7 @@ class PDFGenerator {
         self.pathToItem = bundle.path(forResource: "item", ofType: "html")!
     }
     
-    func generate() -> String? {
+    func generateHTML() -> String? {
         do {
             var HTMLContent = try String(contentsOfFile: pathToTemplate)
             
@@ -43,8 +43,8 @@ class PDFGenerator {
                 HTMLItem = HTMLItem.replacingOccurrences(of: "{item_row_number}", with: "\(index)")
                 HTMLItem = HTMLItem.replacingOccurrences(of: "{item_description}", with: invoiceItem.title ?? "")
                 HTMLItem = HTMLItem.replacingOccurrences(of: "{item_quantity}", with: "\(invoiceItem.amount)")
-                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_price}", with: currencyFormatter.string(from: NSNumber(value: invoiceItem.price)) ?? "")
-                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_line_total}", with: currencyFormatter.string(from: NSNumber(value: invoiceItem.totalPrice)) ?? "")
+                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_price}", with: CurrencyFormatter.string(from: NSNumber(value: invoiceItem.price)) ?? "")
+                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_line_total}", with: CurrencyFormatter.string(from: NSNumber(value: invoiceItem.totalPrice)) ?? "")
                 index += 1
                 itemsString.append(HTMLItem)
             }
@@ -57,9 +57,9 @@ class PDFGenerator {
             HTMLContent = HTMLContent.replacingOccurrences(of: "{client_city_zip_state}", with: invoice.client?.city ?? "")
             HTMLContent = HTMLContent.replacingOccurrences(of: "{client_phone_fax}", with: String(invoice.client?.oib ?? 0))
             
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_subtotal}", with: currencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_total}", with: currencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_due}", with: currencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_subtotal}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_total}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_due}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
             
             HTMLContent = HTMLContent.replacingOccurrences(of: "{issue_date}", with: DateFormat.string(from: invoice.createdAt ?? Date()))
             HTMLContent = HTMLContent.replacingOccurrences(of: "{due_date}", with: DateFormat.string(from: invoice.date ?? Date()))
