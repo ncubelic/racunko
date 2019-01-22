@@ -88,7 +88,7 @@ b, strong, .bold {
   font: normal 13px/1.4em 'Open Sans', Sans-serif;
   margin: 0 auto;
   min-height: 1158px;
-  background: #F7EDEB url("../img/bg.png") 0 0 no-repeat;
+  background: #F7F0F5 url("../img/bg.png") 0 0 no-repeat;
   background-size: 100% auto;
   color: #5B6165;
   position: relative;
@@ -116,7 +116,7 @@ b, strong, .bold {
   line-height: 1em;
   font-weight: bold;
   font-size: 22px;
-  color: #B32C39;
+  color: #000000;
 }
 #memo .company-info span {
   font-size: 11px;
@@ -142,7 +142,7 @@ b, strong, .bold {
   text-transform: uppercase;
   padding: 0px 2px 0px 60px;
   font-size: 50px;
-  background: #F4846F;
+  background: #C9C5CB;
   color: white;
 }
 #invoice-title-number #number {
@@ -195,7 +195,7 @@ table th, table td {
   font-weight: bold;
   padding: 5px 8px;
   text-align: right;
-  background: #B32C39;
+  background: #C9C5CB;
   color: white;
   text-transform: uppercase;
 }
@@ -217,7 +217,7 @@ table th, table td {
 
 #sums {
   margin: 25px 30px 0 0;
-  background: url("../img/total-stripe-firebrick.png") right bottom no-repeat;
+  background: url("../img/sum-pozadina.png") right bottom no-repeat;
 }
 #sums table {
   float: right;
@@ -284,7 +284,7 @@ table th, table td {
 #terms .notes {
   min-height: 30px;
   min-width: 50px;
-  color: #B32C39;
+  color: #000000;
 }
 #terms .payment-info div {
   margin-bottom: 3px;
@@ -301,7 +301,7 @@ table th, table td {
   float: right;
   padding: 0px 30px 0px 2px;
   font-size: 50px;
-  background: #F4846F;
+  background: #D7D9D7;
   color: white;
 }
 

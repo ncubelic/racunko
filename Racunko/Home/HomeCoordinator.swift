@@ -29,6 +29,9 @@ class HomeCoordinator: NSObject, NavigationCoordinator {
     func start() {
         let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiate(HomeViewController.self)
         homeVC.delegate = self
+        homeVC.title = "Računko"
+//        rootViewController.navigationItem.largeTitleDisplayMode = .always
+        rootViewController.navigationBar.prefersLargeTitles = true
         rootViewController.pushViewController(homeVC, animated: true)
     }
     
