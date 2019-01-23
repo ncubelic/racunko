@@ -46,14 +46,14 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
         print(bus)
     }
     
-    private func transformToBusiness(from items: [[Item]]) -> Business {
+    private func transformToBusiness(from items: [[Item]]) -> BusinessModel {
         let businessData = items[0]
         let bankData = items[1]
         let invoiceData = items[2]
         
-        let business = Business()
+        var business = BusinessModel()
         business.name = businessData[0].type.getValue()
-        business.oib = Int16(businessData[1].type.getValue() ?? "0") ?? 0
+        business.oib = Int(businessData[1].type.getValue() ?? "0") ?? 0
         business.address = businessData[2].type.getValue()
         business.zipCity = businessData[3].type.getValue()
         business.phone = businessData[4].type.getValue()

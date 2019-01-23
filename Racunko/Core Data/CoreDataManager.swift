@@ -100,7 +100,7 @@ class CoreDataManager {
     }
     
     /// Insert Business info
-    func addBusiness(_ business: Business) {
+    func addBusiness(_ business: BusinessModel) {
         let businessCoreData = Business(context: persistentContainer.viewContext)
         businessCoreData.id = UUID()
         businessCoreData.address = business.address
@@ -110,7 +110,7 @@ class CoreDataManager {
         businessCoreData.email = business.email
         businessCoreData.iban = business.iban
         businessCoreData.name = business.name
-        businessCoreData.oib = business.oib
+        businessCoreData.oib = Int16(business.oib ?? 0)
         businessCoreData.web = business.web
         businessCoreData.bankName = business.bankName
         businessCoreData.phone = business.phone

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D70FD5F21F9199700188955 /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70FD5E21F9199700188955 /* BusinessModel.swift */; };
 		2DDB2F7E21E0B6FB00429FA2 /* InvoiceItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB2F7C21E0B6FB00429FA2 /* InvoiceItemHeader.swift */; };
 		2DDB2F7F21E0B6FB00429FA2 /* InvoiceItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB2F7D21E0B6FB00429FA2 /* InvoiceItemHeader.xib */; };
 		930F38DB21F5FB4100D8471C /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38DA21F5FB4000D8471C /* PreviewViewController.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D70FD5E21F9199700188955 /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		2DDB2F7C21E0B6FB00429FA2 /* InvoiceItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItemHeader.swift; sourceTree = "<group>"; };
 		2DDB2F7D21E0B6FB00429FA2 /* InvoiceItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceItemHeader.xib; sourceTree = "<group>"; };
 		930F38DA21F5FB4000D8471C /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				930F38E621F700B700D8471C /* Settings.storyboard */,
 				930F38E821F700D900D8471C /* SettingsViewController.swift */,
 				930F38F621F7488400D8471C /* SettingsCoordinator.swift */,
+				2D70FD5E21F9199700188955 /* BusinessModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				930F38F721F7488400D8471C /* SettingsCoordinator.swift in Sources */,
 				93B687CD213044F400591C4E /* InvoiceTableViewCell.swift in Sources */,
 				93B687C92130419A00591C4E /* InvoiceViewController.swift in Sources */,
+				2D70FD5F21F9199700188955 /* BusinessModel.swift in Sources */,
 				93B687C721303ECA00591C4E /* UIStoryboard+Extension.swift in Sources */,
 				930F38DE21F610BA00D8471C /* HomeCoordinator.swift in Sources */,
 				930F38F521F7469D00D8471C /* TextFieldCell.swift in Sources */,
