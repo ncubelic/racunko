@@ -35,6 +35,7 @@ class SplitViewCoordinator: NSObject, SplitCoordinator {
         
         detailsNavigationController.setViewControllers([previewVC], animated: false)
         rootViewController.viewControllers = [masterNavigationController, detailsNavigationController]
+        masterNavigationController.view.backgroundColor = .secondaryDark
     }
 }
 
@@ -49,6 +50,7 @@ extension SplitViewCoordinator: HomeCoordinatorDelegate {
     
     func showSettings() {
         let settingsCoordinator = SettingsCoordinator(rootViewController: detailsNavigationController, dependencyManager: dependencyManager)
+        addChildCoordinator(settingsCoordinator)
         settingsCoordinator.start()
     }
 }

@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Business" representedClassName=".Business" syncable="YES" codeGenerationType="category">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bankName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="defaultFootNote" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="defaultPaymentType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iban" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oib" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="web" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCity" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Client" representedClassName=".Client" syncable="YES" codeGenerationType="category">
         <attribute name="address" attributeType="String" syncable="YES"/>
         <attribute name="city" attributeType="String" syncable="YES"/>
@@ -32,5 +46,6 @@
         <element name="Client" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Invoice" positionX="-54" positionY="-18" width="128" height="195"/>
         <element name="InvoiceItem" positionX="-54" positionY="54" width="128" height="135"/>
+        <element name="Business" positionX="-54" positionY="72" width="128" height="225"/>
     </elements>
 </model>

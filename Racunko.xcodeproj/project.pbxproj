@@ -23,6 +23,8 @@
 		930F38F421F7469D00D8471C /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930F38F221F7469D00D8471C /* TextFieldCell.xib */; };
 		930F38F521F7469D00D8471C /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38F321F7469D00D8471C /* TextFieldCell.swift */; };
 		930F38F721F7488400D8471C /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38F621F7488400D8471C /* SettingsCoordinator.swift */; };
+		930F38F921F8598600D8471C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38F821F8598600D8471C /* UIColor+Extension.swift */; };
+		930F38FB21F8B0E900D8471C /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38FA21F8B0E900D8471C /* Business.swift */; };
 		934CDC9E21F07A8300C8B197 /* InvoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */; };
 		9351ED0E21395FF7006CEDAC /* AddInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */; };
 		9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */; };
@@ -76,6 +78,8 @@
 		930F38F221F7469D00D8471C /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		930F38F321F7469D00D8471C /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		930F38F621F7488400D8471C /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		930F38F821F8598600D8471C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		930F38FA21F8B0E900D8471C /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItem.swift; sourceTree = "<group>"; };
 		9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceViewController.swift; sourceTree = "<group>"; };
 		9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCoordinator.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				9380B6942148F6AE00C39838 /* Client.swift */,
 				9380B696214937E900C39838 /* Invoice.swift */,
 				934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */,
+				930F38FA21F8B0E900D8471C /* Business.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				93B687B12130336200591C4E /* Supporting Files */,
 				930F38F221F7469D00D8471C /* TextFieldCell.xib */,
 				930F38F321F7469D00D8471C /* TextFieldCell.swift */,
+				930F38F821F8598600D8471C /* UIColor+Extension.swift */,
 			);
 			path = Racunko;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 				9380B6692147AB3900C39838 /* PDFGenerator.swift in Sources */,
 				930F38E421F614D900D8471C /* SplitCoordinator.swift in Sources */,
 				930F38E921F700D900D8471C /* SettingsViewController.swift in Sources */,
+				930F38F921F8598600D8471C /* UIColor+Extension.swift in Sources */,
 				93B687B92130343300591C4E /* DependencyManager.swift in Sources */,
 				930F38E021F6115D00D8471C /* HomeViewController.swift in Sources */,
 				93E551B621DF7EFC0090DAD8 /* AddInvoiceLabelCell.swift in Sources */,
@@ -388,6 +395,7 @@
 				930F38F521F7469D00D8471C /* TextFieldCell.swift in Sources */,
 				93E551BA21DF86D80090DAD8 /* InvoiceItemTableViewCell.swift in Sources */,
 				93E551BC21DF8CDD0090DAD8 /* InvoiceItemModel.swift in Sources */,
+				930F38FB21F8B0E900D8471C /* Business.swift in Sources */,
 				9380B697214937E900C39838 /* Invoice.swift in Sources */,
 				2DDB2F7E21E0B6FB00429FA2 /* InvoiceItemHeader.swift in Sources */,
 			);

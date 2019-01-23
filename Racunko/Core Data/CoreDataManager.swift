@@ -98,4 +98,30 @@ class CoreDataManager {
         guard let result = try? persistentContainer.viewContext.fetch(fetchRequest) else { return [] }
         return result
     }
+    
+    /// Insert Business info
+    func addBusiness(_ business: Business) {
+        let businessCoreData = Business(context: persistentContainer.viewContext)
+        businessCoreData.id = UUID()
+        businessCoreData.address = business.address
+        businessCoreData.bankName = business.bankName
+        businessCoreData.defaultFootNote = business.defaultFootNote
+        businessCoreData.defaultPaymentType = business.defaultPaymentType
+        businessCoreData.email = business.email
+        businessCoreData.iban = business.iban
+        businessCoreData.name = business.name
+        businessCoreData.oib = business.oib
+        businessCoreData.web = business.web
+        businessCoreData.bankName = business.bankName
+        businessCoreData.phone = business.phone
+        businessCoreData.zipCity = business.zipCity
+        saveContext()
+    }
+    
+    /// Get All Business
+    func getBusiness() -> [Business] {
+        let fetchRequest: NSFetchRequest<Business> = Business.fetchRequest()
+        guard let result = try? persistentContainer.viewContext.fetch(fetchRequest) else { return [] }
+        return result
+    }
 }

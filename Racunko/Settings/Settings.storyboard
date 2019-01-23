@@ -16,7 +16,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Settings View Controller-->
+        <!--Title-->
         <scene sceneID="dbC-3k-9M4">
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="3CS-k0-Ka4" customClass="SettingsViewController" customModule="Racunko" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,6 +62,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oTt-qZ-PCr"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="rHw-Rf-dYO"/>
                     <connections>
                         <outlet property="tableView" destination="mhb-Bv-r2Y" id="eN7-G2-ZA9"/>
                     </connections>
