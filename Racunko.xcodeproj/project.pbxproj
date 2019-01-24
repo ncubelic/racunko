@@ -26,6 +26,8 @@
 		930F38F721F7488400D8471C /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38F621F7488400D8471C /* SettingsCoordinator.swift */; };
 		930F38F921F8598600D8471C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38F821F8598600D8471C /* UIColor+Extension.swift */; };
 		930F38FB21F8B0E900D8471C /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38FA21F8B0E900D8471C /* Business.swift */; };
+		930F390421FA0F7E00D8471C /* LogoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930F390221FA0F7E00D8471C /* LogoHeader.xib */; };
+		930F390521FA0F7E00D8471C /* LogoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F390321FA0F7E00D8471C /* LogoHeader.swift */; };
 		934CDC9E21F07A8300C8B197 /* InvoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */; };
 		9351ED0E21395FF7006CEDAC /* AddInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */; };
 		9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */; };
@@ -82,6 +84,8 @@
 		930F38F621F7488400D8471C /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		930F38F821F8598600D8471C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		930F38FA21F8B0E900D8471C /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		930F390221FA0F7E00D8471C /* LogoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoHeader.xib; sourceTree = "<group>"; };
+		930F390321FA0F7E00D8471C /* LogoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoHeader.swift; sourceTree = "<group>"; };
 		934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItem.swift; sourceTree = "<group>"; };
 		9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceViewController.swift; sourceTree = "<group>"; };
 		9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCoordinator.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				930F38E821F700D900D8471C /* SettingsViewController.swift */,
 				930F38F621F7488400D8471C /* SettingsCoordinator.swift */,
 				2D70FD5E21F9199700188955 /* BusinessModel.swift */,
+				930F390221FA0F7E00D8471C /* LogoHeader.xib */,
+				930F390321FA0F7E00D8471C /* LogoHeader.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 				93E551B921DF86D80090DAD8 /* InvoiceItemTableViewCell.xib in Resources */,
 				2DDB2F7F21E0B6FB00429FA2 /* InvoiceItemHeader.xib in Resources */,
 				93B687D0213048F200591C4E /* PTSans-Bold.ttf in Resources */,
+				930F390421FA0F7E00D8471C /* LogoHeader.xib in Resources */,
 				93B687BB2130350200591C4E /* Colors.xcassets in Resources */,
 				93B687A72130312400591C4E /* Assets.xcassets in Resources */,
 				930F38F121F712D100D8471C /* css in Resources */,
@@ -385,6 +392,7 @@
 				93B687C321303BA100591C4E /* ClientTableViewCell.swift in Sources */,
 				93B687BF213038D200591C4E /* ClientListViewController.swift in Sources */,
 				93B687A02130312300591C4E /* AppDelegate.swift in Sources */,
+				930F390521FA0F7E00D8471C /* LogoHeader.swift in Sources */,
 				93B687CF2130455700591C4E /* InvoiceModel.swift in Sources */,
 				93B687BD213036B900591C4E /* ClientCoordinator.swift in Sources */,
 				93B687CB213042FD00591C4E /* InvoiceListViewController.swift in Sources */,

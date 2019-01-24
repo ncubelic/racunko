@@ -9,7 +9,7 @@
         <attribute name="iban" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="oib" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="oib" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="web" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCity" optional="YES" attributeType="String" syncable="YES"/>
@@ -43,9 +43,9 @@
         <relationship name="invoice" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Invoice" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Business" positionX="-54" positionY="72" width="128" height="225"/>
         <element name="Client" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Invoice" positionX="-54" positionY="-18" width="128" height="195"/>
         <element name="InvoiceItem" positionX="-54" positionY="54" width="128" height="135"/>
-        <element name="Business" positionX="-54" positionY="72" width="128" height="225"/>
     </elements>
 </model>

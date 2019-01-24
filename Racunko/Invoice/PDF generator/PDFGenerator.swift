@@ -14,9 +14,11 @@ class PDFGenerator {
     let pathToTemplate: String
     let pathToItem: String
     let invoice: Invoice
+    let business: Business
     
-    init(invoice: Invoice) {
+    init(invoice: Invoice, myCompanyDetails: Business) {
         self.invoice = invoice
+        self.business = myCompanyDetails
         
         let bundle = Bundle.main
         self.pathToTemplate = bundle.path(forResource: "template", ofType: "html")!
@@ -28,11 +30,17 @@ class PDFGenerator {
             var HTMLContent = try String(contentsOfFile: pathToTemplate)
             
             // Obrt details
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_name}", with: "Irki, vl. Irena Budimir")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_address}", with: "Bratstvo I/21")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_city_zip_state}", with: " ● 10410 Velika Gorica")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_phone_fax}", with: "+385 91 555 31 53")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_email_web}", with: " ● www.irki.hr ● info@irki.hr")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_name}", with: business.name ?? "")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_address}", with: business.address ?? "")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_city_zip_state}", with: " ● \(business.zipCity ?? "")")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_phone_fax}", with: business.phone ?? "")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_email_web}", with: " ● \(business.web ?? "") ● \(business.email ?? "")")
+            
+            if let logoPath = Bundle(for: PDFGenerator.self).path(forResource: "img/logo", ofType: "png") {
+                HTMLContent = HTMLContent.replacingOccurrences(of: "{company_logo}", with: logoPath)
+            } else if let logoPath = Bundle(for: PDFGenerator.self).path(forResource: "img/nologo", ofType: "png") {
+                HTMLContent = HTMLContent.replacingOccurrences(of: "{company_logo}", with: logoPath)
+            }
             
             // Invoice details
             let itemsString = NSMutableString()
@@ -64,9 +72,9 @@ class PDFGenerator {
             HTMLContent = HTMLContent.replacingOccurrences(of: "{issue_date}", with: DateFormat.string(from: invoice.createdAt ?? Date()))
             HTMLContent = HTMLContent.replacingOccurrences(of: "{due_date}", with: DateFormat.string(from: invoice.date ?? Date()))
             
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{terms}", with: invoice.footnote ?? "")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{terms}", with: invoice.footnote ?? (business.defaultFootNote ?? ""))
             
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info1}", with: invoice.paymentType ?? "")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info1}", with: invoice.paymentType ?? (business.defaultPaymentType ?? ""))
             HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info2}", with: String(""))
             HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info3}", with: String(""))
             HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info4}", with: String(""))

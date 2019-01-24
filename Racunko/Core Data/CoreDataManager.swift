@@ -11,6 +11,10 @@ import CoreData
 
 class CoreDataManager {
     
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Invoice")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -51,7 +55,7 @@ class CoreDataManager {
     // MARK: - Public functions
     
     func addClient(_ company: Company) {
-        let client = Client(context: persistentContainer.viewContext)
+        let client = Client(context: context)
         client.address = company.address
         client.city = company.city
         client.name = company.name
@@ -62,13 +66,13 @@ class CoreDataManager {
     
     func getClients() -> [Client] {
         let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
-        guard let result = try? persistentContainer.viewContext.fetch(fetchRequest) else { return [] }
+        guard let result = try? context.fetch(fetchRequest) else { return [] }
         return result
     }
     
     /// Insert new Invoice for Client
     func addInvoice(_ invoiceModel: InvoiceModel, for client: Client) {
-        let invoice = Invoice(context: persistentContainer.viewContext)
+        let invoice = Invoice(context: context)
         invoice.number = invoiceModel.number
         invoice.totalAmount = invoiceModel.amount
         invoice.createdAt = invoiceModel.createdAt
@@ -76,7 +80,7 @@ class CoreDataManager {
         invoice.client = client
         
         invoiceModel.invoiceItems.forEach { invoiceItemModel in
-            let invoiceItem = InvoiceItem(context: persistentContainer.viewContext)
+            let invoiceItem = InvoiceItem(context: context)
             invoiceItem.title = invoiceItemModel.description
             invoiceItem.amount = Int16(invoiceItemModel.amount)
             invoiceItem.price = invoiceItemModel.price
@@ -88,20 +92,23 @@ class CoreDataManager {
     
     /// Delete invoice
     func deleteInvoice(_ invoice: Invoice) {
-        persistentContainer.viewContext.delete(invoice)
+        context.delete(invoice)
         saveContext()
     }
     
     /// Get list of invoices by Client
     func getInvoices(for client: Client) -> [Invoice] {
         let fetchRequest: NSFetchRequest<Invoice> = Invoice.fetchRequest()
-        guard let result = try? persistentContainer.viewContext.fetch(fetchRequest) else { return [] }
+        guard let result = try? context.fetch(fetchRequest) else { return [] }
         return result
     }
     
     /// Insert Business info
     func addBusiness(_ business: BusinessModel) {
-        let businessCoreData = Business(context: persistentContainer.viewContext)
+        // delete all before inserting new one, in order to store only one business info
+        deleteAllBusiness()
+        
+        let businessCoreData = Business(context: context)
         businessCoreData.id = UUID()
         businessCoreData.address = business.address
         businessCoreData.bankName = business.bankName
@@ -110,7 +117,7 @@ class CoreDataManager {
         businessCoreData.email = business.email
         businessCoreData.iban = business.iban
         businessCoreData.name = business.name
-        businessCoreData.oib = Int16(business.oib ?? 0)
+        businessCoreData.oib = Int64(business.oib ?? 0)
         businessCoreData.web = business.web
         businessCoreData.bankName = business.bankName
         businessCoreData.phone = business.phone
@@ -118,10 +125,23 @@ class CoreDataManager {
         saveContext()
     }
     
+    /// Delete all 'Business' from table
+    func deleteAllBusiness() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Business.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print("There was an error: \(error)")
+        }
+    }
+    
     /// Get All Business
     func getBusiness() -> [Business] {
         let fetchRequest: NSFetchRequest<Business> = Business.fetchRequest()
-        guard let result = try? persistentContainer.viewContext.fetch(fetchRequest) else { return [] }
+        guard let result = try? context.fetch(fetchRequest) else { return [] }
         return result
     }
 }

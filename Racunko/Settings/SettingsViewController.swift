@@ -10,6 +10,7 @@ import UIKit
 
 protocol SettingsViewControllerDelegate: class {
     func shouldSave(_ items: [[Item]])
+    func showImageUploadAlert(from rect: CGRect?)
 }
 
 class SettingsViewController: UIViewController {
@@ -18,30 +19,23 @@ class SettingsViewController: UIViewController {
     
     weak var delegate: SettingsViewControllerDelegate?
     
-    var items: [[Item]] = [
-        [
-            Item(title: "Naziv obrta", type: ItemType.textField(placeholder: "", text: nil)),
-            Item(title: "OIB ili Matični broj", type: ItemType.textField(placeholder: "", text: nil)),
-            Item(title: "Adresa sjedišta", type: ItemType.textField(placeholder: "", text: nil)),
-            Item(title: "Poštanski broj i mjesto", type: ItemType.textField(placeholder: "", text: nil)),
-            Item(title: "Kontakt telefon", type: ItemType.textField(placeholder: "", text: nil)),
-            Item(title: "Web stranica", type: ItemType.textField(placeholder: "", text: nil)),
-            Item(title: "Email adresa", type: ItemType.textField(placeholder: "", text: nil))
-        ],
-        [
-            Item(title: "IBAN", type: ItemType.textField(placeholder: "Žiro račun obrta", text: nil)),
-            Item(title: "Banka", type: ItemType.textField(placeholder: "Naziv banke u kojoj je žiro račun", text: nil))
-        ],
-        [
-            Item(title: "Defaultna napomena u računima (opcionalno)", type: ItemType.textField(placeholder: "Nalazi se u podnožju računa", text: nil)),
-            Item(title: "Defaultni način plaćanja", type: ItemType.textField(placeholder: "", text: nil))
-        ]
-    ]
+    var items: [[Item]] = []
+    
+    var rect: CGRect?
+    
+    private var logoHeader: LogoHeader?
+    private var logoImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "TextFieldCell")
+        tableView.register(UINib(nibName: "LogoHeader", bundle: nil), forCellReuseIdentifier: "LogoHeader")
+    }
+    
+    func setupHeaderImage(_ image: UIImage) {
+        self.logoImage = image
+        tableView.reloadData()
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -96,6 +90,33 @@ extension SettingsViewController: UITableViewDelegate {
         case 2: return "Detalji računa"
         default: return nil
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            guard let header = tableView.dequeueReusableCell(withIdentifier: "LogoHeader") as? LogoHeader else { return nil }
+            logoHeader = header
+            header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showImageUploadAlert)))
+            if let image = logoImage {
+                header.setup(with: image)
+            }
+            self.rect = header.bounds
+            return header
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0: return 130
+        default: return 30
+        }
+    }
+    
+    @objc func showImageUploadAlert() {
+        delegate?.showImageUploadAlert(from: rect)
     }
 }
 

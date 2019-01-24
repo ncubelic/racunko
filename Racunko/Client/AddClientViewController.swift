@@ -36,12 +36,12 @@ enum ItemType {
         }
     }
     
-    mutating func setNewValue(_ newValue: String) {
+    mutating func setNewValue(_ newValue: String?) {
         switch self {
         case .textField(let placeholder, _):
             self = ItemType.textField(placeholder: placeholder, text: newValue)
         case .label:
-            self = ItemType.label(text: newValue)
+            self = ItemType.label(text: newValue ?? "")
         default:
             return
         }
