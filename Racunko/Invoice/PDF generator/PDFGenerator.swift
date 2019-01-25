@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import QuartzCore
 
 class PDFGenerator {
@@ -83,6 +84,41 @@ class PDFGenerator {
             print("Unable to open HTML template file")
         }
         return nil
+    }
+    
+    func exportHTMLToPDF(_ htmlContent: String?) {
+        guard let htmlContent = htmlContent else {
+            print("No HTML content")
+            return
+        }
+        let printPageRenderer = PrintPageRenderer()
+        let printFormatter = UIMarkupTextPrintFormatter(markupText: htmlContent)
+        
+        printPageRenderer.addPrintFormatter(printFormatter, startingAtPageAt: 0)
+        
+        guard let pdfData = drawPDFUsingPrintPageRenderer(printPageRenderer) else {
+            print("error drawing pdf using print page renderer")
+            return
+        }
+        
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let invoiceNumber = invoice.number ?? "New"
+        let fileName = path + "/\(invoiceNumber).pdf"
+        pdfData.write(toFile: fileName, atomically: true)
+        print(fileName)
+    }
+    
+    private func drawPDFUsingPrintPageRenderer(_ printPageRenderer: UIPrintPageRenderer) -> NSData! {
+        let data = NSMutableData()
+        
+        UIGraphicsBeginPDFContextToData(data, .zero, nil)
+        UIGraphicsBeginPDFPage()
+        
+        printPageRenderer.drawPage(at: 0, in: UIGraphicsGetPDFContextBounds())
+        
+        UIGraphicsEndPDFContext()
+        
+        return data
     }
     
     private func getLogoPath() -> String {

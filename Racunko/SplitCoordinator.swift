@@ -79,15 +79,23 @@ extension SplitViewCoordinator: ClientCoordinatorDelegate {
 
 extension SplitViewCoordinator: InvoiceCoordinatorDelegate {
    
+    // FIXME: refactor this to be reusable in different caller places
     func shouldShow(invoice: Invoice) {
         guard let myCompany = dependencyManager.coreDataManager.getBusiness().first else {
             print("My company details are not stored in core data")
             return
         }
         let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
+        invoiceVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(createPDF))
         let pdfGenerator = PDFGenerator(invoice: invoice, myCompanyDetails: myCompany)
-        invoiceVC.HTMLContent = pdfGenerator.generateHTML()
+        let htmlContent = pdfGenerator.generateHTML()
+        invoiceVC.HTMLContent = htmlContent
         invoiceVC.title = invoice.number
+        pdfGenerator.exportHTMLToPDF(htmlContent)
         detailsNavigationController.setViewControllers([invoiceVC], animated: false)
+    }
+    
+    @objc func createPDF() {
+        
     }
 }

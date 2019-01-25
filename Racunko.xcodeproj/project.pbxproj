@@ -32,6 +32,7 @@
 		934D697521FAFCCF0001FC35 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D697421FAFCCF0001FC35 /* HomeTableViewCell.swift */; };
 		934D697921FB11B80001FC35 /* IndexPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D697821FB11B80001FC35 /* IndexPath+Extensions.swift */; };
 		934D697B21FB1B070001FC35 /* RTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D697A21FB1B070001FC35 /* RTextField.swift */; };
+		934D697D21FB3A2C0001FC35 /* PrintPageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D697C21FB3A2C0001FC35 /* PrintPageRenderer.swift */; };
 		9351ED0E21395FF7006CEDAC /* AddInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */; };
 		9351ED102139689E006CEDAC /* InvoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */; };
 		9380B6692147AB3900C39838 /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6682147AB3900C39838 /* PDFGenerator.swift */; };
@@ -93,6 +94,7 @@
 		934D697421FAFCCF0001FC35 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		934D697821FB11B80001FC35 /* IndexPath+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+Extensions.swift"; sourceTree = "<group>"; };
 		934D697A21FB1B070001FC35 /* RTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTextField.swift; sourceTree = "<group>"; };
+		934D697C21FB3A2C0001FC35 /* PrintPageRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintPageRenderer.swift; sourceTree = "<group>"; };
 		9351ED0D21395FF7006CEDAC /* AddInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceViewController.swift; sourceTree = "<group>"; };
 		9351ED0F2139689E006CEDAC /* InvoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCoordinator.swift; sourceTree = "<group>"; };
 		9380B6682147AB3900C39838 /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				930F38D921F5D41F00D8471C /* HTML */,
 				9380B6682147AB3900C39838 /* PDFGenerator.swift */,
+				934D697C21FB3A2C0001FC35 /* PrintPageRenderer.swift */,
 			);
 			path = "PDF generator";
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				93E551BC21DF8CDD0090DAD8 /* InvoiceItemModel.swift in Sources */,
 				930F38FB21F8B0E900D8471C /* Business.swift in Sources */,
 				9380B697214937E900C39838 /* Invoice.swift in Sources */,
+				934D697D21FB3A2C0001FC35 /* PrintPageRenderer.swift in Sources */,
 				2DDB2F7E21E0B6FB00429FA2 /* InvoiceItemHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
