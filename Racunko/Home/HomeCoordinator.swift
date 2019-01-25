@@ -12,6 +12,7 @@ import UIKit
 protocol HomeCoordinatorDelegate: class {
     func showClients()
     func showSettings()
+    func showAllInvoices()
 }
 
 class HomeCoordinator: NSObject, NavigationCoordinator {
@@ -46,7 +47,7 @@ extension HomeCoordinator: HomeViewControllerDelegate {
     }
     
     func showInvoicesScreen() {
-        print("unimplemented")
+        delegate?.showAllInvoices()
     }
     
     func showSettingsScreen() {

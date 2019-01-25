@@ -31,6 +31,7 @@ class SettingsCoordinator: NSObject, NavigationCoordinator {
         settingsVC.delegate = self
         settingsVC.items = generateItems(for: myCompanyData)
         rootViewController.setViewControllers([settingsVC], animated: false)
+        settingsVC.setupHeaderImage(getCompanyLogo())
     }
     
     /// Returns tableView datasource with myCompany details if they are saved in app
@@ -79,6 +80,19 @@ class SettingsCoordinator: NSObject, NavigationCoordinator {
         ]
         
         return sections
+    }
+    
+    private func getCompanyLogo() -> UIImage {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let logoPath = path + "/logo.png"
+        
+        if FileManager.default.fileExists(atPath: logoPath) {
+            guard let image = UIImage(contentsOfFile: logoPath) else {
+                return UIImage()
+            }
+            return image
+        }
+        return UIImage()
     }
     
 }
@@ -142,8 +156,9 @@ extension SettingsCoordinator: UIImagePickerControllerDelegate, UINavigationCont
         settingsVC.setupHeaderImage(chosenImage)
         
         if let imageData = chosenImage.pngData() {
-            let path = Bundle.main.bundlePath
-            let url = URL(fileURLWithPath: path + "/img/logo.png")
+            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let writePath = path.appending("/logo.png")
+            let url = URL(fileURLWithPath: writePath)
             do {
                 try imageData.write(to: url, options: .atomicWrite)
             } catch {

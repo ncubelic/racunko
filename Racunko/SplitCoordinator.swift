@@ -53,11 +53,33 @@ extension SplitViewCoordinator: HomeCoordinatorDelegate {
         addChildCoordinator(settingsCoordinator)
         settingsCoordinator.start()
     }
+    
+    func showAllInvoices() {
+        let invoiceCoordinator = InvoiceCoordinator(rootViewController: masterNavigationController, dependencyManager: dependencyManager)
+        invoiceCoordinator.delegate = self
+        invoiceCoordinator.start()
+        childCoordinators.append(invoiceCoordinator)
+    }
 }
 
 extension SplitViewCoordinator: ClientCoordinatorDelegate {
     
     func shouldPreview(_ invoice: Invoice) {
+        guard let myCompany = dependencyManager.coreDataManager.getBusiness().first else {
+            print("My company details are not stored in core data")
+            return
+        }
+        let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
+        let pdfGenerator = PDFGenerator(invoice: invoice, myCompanyDetails: myCompany)
+        invoiceVC.HTMLContent = pdfGenerator.generateHTML()
+        invoiceVC.title = invoice.number
+        detailsNavigationController.setViewControllers([invoiceVC], animated: false)
+    }
+}
+
+extension SplitViewCoordinator: InvoiceCoordinatorDelegate {
+   
+    func shouldShow(invoice: Invoice) {
         guard let myCompany = dependencyManager.coreDataManager.getBusiness().first else {
             print("My company details are not stored in core data")
             return

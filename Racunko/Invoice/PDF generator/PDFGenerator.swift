@@ -36,11 +36,7 @@ class PDFGenerator {
             HTMLContent = HTMLContent.replacingOccurrences(of: "{company_phone_fax}", with: business.phone ?? "")
             HTMLContent = HTMLContent.replacingOccurrences(of: "{company_email_web}", with: " ● \(business.web ?? "") ● \(business.email ?? "")")
             
-            if let logoPath = Bundle(for: PDFGenerator.self).path(forResource: "img/logo", ofType: "png") {
-                HTMLContent = HTMLContent.replacingOccurrences(of: "{company_logo}", with: logoPath)
-            } else if let logoPath = Bundle(for: PDFGenerator.self).path(forResource: "img/nologo", ofType: "png") {
-                HTMLContent = HTMLContent.replacingOccurrences(of: "{company_logo}", with: logoPath)
-            }
+            
             
             // Invoice details
             let itemsString = NSMutableString()
@@ -56,6 +52,8 @@ class PDFGenerator {
                 index += 1
                 itemsString.append(HTMLItem)
             }
+            
+            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_logo}", with: getLogoPath())
             
             HTMLContent = HTMLContent.replacingOccurrences(of: "{invoice_item}", with: String(itemsString))
             
@@ -85,5 +83,17 @@ class PDFGenerator {
             print("Unable to open HTML template file")
         }
         return nil
+    }
+    
+    private func getLogoPath() -> String {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let logoPath = path + "/logo.png"
+        
+        if FileManager.default.fileExists(atPath: logoPath) {
+            return logoPath
+        } else if let logoPath = Bundle(for: PDFGenerator.self).path(forResource: "img/nologo", ofType: "png") {
+            return logoPath
+        }
+        return ""
     }
 }

@@ -99,6 +99,14 @@ class CoreDataManager {
     /// Get list of invoices by Client
     func getInvoices(for client: Client) -> [Invoice] {
         let fetchRequest: NSFetchRequest<Invoice> = Invoice.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "client == %@", client)
+        guard let result = try? context.fetch(fetchRequest) else { return [] }
+        return result
+    }
+    
+    /// Get list of all invoices
+    func getAllInvoices() -> [Invoice] {
+        let fetchRequest: NSFetchRequest<Invoice> = Invoice.fetchRequest()
         guard let result = try? context.fetch(fetchRequest) else { return [] }
         return result
     }

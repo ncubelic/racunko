@@ -32,7 +32,10 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
     }
     
     func start() {
-        guard let client = client else { return }
+        guard let client = client else {
+            showAllInvoices()
+            return
+        }
         showInvoiceList(for: client)
     }
     
@@ -40,6 +43,15 @@ class InvoiceCoordinator: NSObject, NavigationCoordinator {
         invoiceListVC.currentClient = client
         invoiceListVC.delegate = self
         invoiceListVC.items2 = dependencyManager.coreDataManager.getInvoices(for: client)
+        invoiceListVC.title = client.name
+        rootViewController.pushViewController(invoiceListVC, animated: true)
+    }
+    
+    private func showAllInvoices() {
+        invoiceListVC.currentClient = nil
+        invoiceListVC.delegate = self
+        invoiceListVC.items2 = dependencyManager.coreDataManager.getAllInvoices()
+        invoiceListVC.title = "Računi"
         rootViewController.pushViewController(invoiceListVC, animated: true)
     }
     

@@ -16,6 +16,7 @@ protocol SettingsViewControllerDelegate: class {
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     weak var delegate: SettingsViewControllerDelegate?
     
@@ -26,16 +27,48 @@ class SettingsViewController: UIViewController {
     private var logoHeader: LogoHeader?
     private var logoImage: UIImage?
     
+    var keyboardObserver: NSObjectProtocol? = nil
+    
+    deinit {
+        if let keyboardObserver = keyboardObserver {
+            NotificationCenter.default.removeObserver(keyboardObserver)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "TextFieldCell")
         tableView.register(UINib(nibName: "LogoHeader", bundle: nil), forCellReuseIdentifier: "LogoHeader")
+//        tableView.allowsSelectionDuringEditing = true
+        
+        // keyboard observer
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        view.addGestureRecognizer(gestureRecognizer)
+        
+        keyboardObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: nil) { notification in
+            
+            if let userInfo = notification.userInfo,
+                let durationValue = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
+                let endFrameValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+                let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber {
+                
+                self.tableViewBottomConstraint.constant = UIScreen.main.bounds.height - endFrameValue.cgRectValue.minY
+                
+                UIView.animate(withDuration: durationValue.doubleValue, delay: 0, options: UIView.AnimationOptions(rawValue: UInt(curve.intValue << 16)), animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+            }
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func setupHeaderImage(_ image: UIImage) {
         self.logoImage = image
-        tableView.reloadData()
+        tableView?.reloadData()
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -51,6 +84,7 @@ class SettingsViewController: UIViewController {
     
     private func enableEditing() {
         let firstCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell
+        firstCell?.textField.isEnabled = true
         firstCell?.textField.becomeFirstResponder()
     }
 }
@@ -82,6 +116,14 @@ extension SettingsViewController: UITableViewDataSource {
 
 
 extension SettingsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isEditing {
+            guard let cell = tableView.cellForRow(at: indexPath) as? TextFieldCell else { return }
+            cell.textField.isEnabled = true
+            cell.textField.becomeFirstResponder()
+        }
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
@@ -123,7 +165,12 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController: UITextFieldDelegate {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.backgroundColor = .gradientDark2
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.backgroundColor = .secondaryDark
         guard let editedIndexPath = getIndexPath(textField) else { return }
         guard let value = textField.text else { return }
         
@@ -139,6 +186,7 @@ extension SettingsViewController: UITextFieldDelegate {
             view.endEditing(true)
             return true
         }
+        textField.isEnabled = true
         textField.becomeFirstResponder()
         return true
     }
@@ -156,23 +204,5 @@ extension SettingsViewController: UITextFieldDelegate {
     func getIndexPath(_ textField: UITextField) -> IndexPath? {
         let pointInTableView = textField.convert(textField.bounds.origin, to: tableView)
         return tableView.indexPathForRow(at: pointInTableView)
-    }
-}
-
-
-enum IndexPathType {
-    case row
-    case section
-}
-
-extension IndexPath {
-    
-    func adding(_ type: IndexPathType, _ value: Int) -> IndexPath {
-        switch type {
-        case .row:
-            return IndexPath(row: self.row + 1, section: self.section)
-        case .section:
-            return IndexPath(row: self.row, section: self.section + 1)
-        }
     }
 }

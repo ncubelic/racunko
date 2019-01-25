@@ -16,6 +16,9 @@ protocol HomeViewControllerDelegate: class {
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+    
     weak var delegate: HomeViewControllerDelegate?
     
     let items: [[Item]] = [
@@ -70,11 +73,17 @@ extension HomeViewController: UITableViewDelegate {
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            case 0: delegate?.showClientsScreen()
-            case 1: delegate?.showInvoicesScreen()
-            default: break
+            case 0:
+                tableView.deselectRow(at: indexPath, animated: true)
+                delegate?.showClientsScreen()
+            case 1:
+                tableView.deselectRow(at: indexPath, animated: true)
+                delegate?.showInvoicesScreen()
+            default:
+                break
             }
-        default: delegate?.showSettingsScreen()
+        default:
+            delegate?.showSettingsScreen()
         }
     }
     

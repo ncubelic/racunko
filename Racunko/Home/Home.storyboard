@@ -27,8 +27,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hSb-gL-NSW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" name="PrimaryDark"/>
+                                <color key="sectionIndexColor" name="PrimaryText"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" textLabel="LTh-ox-TX1" style="IBUITableViewCellStyleDefault" id="9NR-a9-lDU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeTableViewCell" textLabel="LTh-ox-TX1" style="IBUITableViewCellStyleDefault" id="9NR-a9-lDU" customClass="HomeTableViewCell" customModule="Racunko" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9NR-a9-lDU" id="h0y-2C-uS9">
@@ -65,6 +66,10 @@
                     <navigationItem key="navigationItem" title="Računko" id="nW1-Iq-Z4E">
                         <barButtonItem key="backBarButtonItem" title=" " id="rf4-o4-rEU"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="hSb-gL-NSW" id="bIH-N8-SPB"/>
+                        <outlet property="tableViewBottomConstraint" destination="zzU-V5-EUJ" id="9o9-xH-cBo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRJ-RM-tLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

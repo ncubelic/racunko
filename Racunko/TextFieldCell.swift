@@ -11,10 +11,10 @@ import UIKit
 class TextFieldCell: UITableViewCell {
 
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: RTextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func setup(with item: Item) {
@@ -23,7 +23,7 @@ class TextFieldCell: UITableViewCell {
             let formattedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
             textField.attributedPlaceholder = formattedPlaceholder
             textField.text = value
+            textField.isEnabled = false
         }
     }
-    
 }
