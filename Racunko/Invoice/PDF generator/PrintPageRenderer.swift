@@ -19,7 +19,6 @@ class PrintPageRenderer: UIPrintPageRenderer {
         
         let pageFrame = CGRect(origin: .zero, size: CGSize(width: A4PageWidth, height: A4PageHeight))
         self.setValue(pageFrame, forKey: "paperRect")
-//        self.setValue(pageFrame, forKey: "printableRect")
-        
+        self.setValue(pageFrame, forKey: "printableRect")
     }
 }

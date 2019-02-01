@@ -31,13 +31,12 @@ class PDFGenerator {
             var HTMLContent = try String(contentsOfFile: pathToTemplate)
             
             // Obrt details
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_name}", with: business.name ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_address}", with: business.address ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_city_zip_state}", with: " ● \(business.zipCity ?? "")")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_phone_fax}", with: business.phone ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_email_web}", with: " ● \(business.web ?? "") ● \(business.email ?? "")")
-            
-            
+            HTMLContent = HTMLContent
+                .replacingOccurrences(of: "{company_name}", with: business.name ?? "")
+                .replacingOccurrences(of: "{company_address}", with: business.address ?? "")
+                .replacingOccurrences(of: "{company_city_zip_state}", with: " ● \(business.zipCity ?? "")")
+                .replacingOccurrences(of: "{company_phone_fax}", with: business.phone ?? "")
+                .replacingOccurrences(of: "{company_email_web}", with: " ● \(business.web ?? "") ● \(business.email ?? "")")
             
             // Invoice details
             let itemsString = NSMutableString()
@@ -45,39 +44,38 @@ class PDFGenerator {
             let items = invoice.invoiceItems?.allObjects as? [InvoiceItem] ?? []
             try? items.forEach { invoiceItem in
                 var HTMLItem = try String(contentsOfFile: pathToItem)
-                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_row_number}", with: "\(index)")
-                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_description}", with: invoiceItem.title ?? "")
-                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_quantity}", with: "\(invoiceItem.amount)")
-                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_price}", with: CurrencyFormatter.string(from: NSNumber(value: invoiceItem.price)) ?? "")
-                HTMLItem = HTMLItem.replacingOccurrences(of: "{item_line_total}", with: CurrencyFormatter.string(from: NSNumber(value: invoiceItem.totalPrice)) ?? "")
+                HTMLItem = HTMLItem
+                    .replacingOccurrences(of: "{item_row_number}", with: "\(index)")
+                    .replacingOccurrences(of: "{item_description}", with: invoiceItem.title ?? "")
+                    .replacingOccurrences(of: "{item_quantity}", with: "\(invoiceItem.amount)")
+                    .replacingOccurrences(of: "{item_price}", with: CurrencyFormatter.string(from: NSNumber(value: invoiceItem.price)) ?? "")
+                    .replacingOccurrences(of: "{item_line_total}", with: CurrencyFormatter.string(from: NSNumber(value: invoiceItem.totalPrice)) ?? "")
                 index += 1
                 itemsString.append(HTMLItem)
             }
             
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{company_logo}", with: getLogoPath())
-            
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{invoice_item}", with: String(itemsString))
-            
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{invoice_number}", with: invoice.number ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{client_name}", with: invoice.client?.name ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{client_address}", with: invoice.client?.address ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{client_city_zip_state}", with: invoice.client?.city ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{client_phone_fax}", with: String(invoice.client?.oib ?? 0))
-            
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_subtotal}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_total}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{amount_due}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
-            
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{issue_date}", with: DateFormat.string(from: invoice.createdAt ?? Date()))
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{due_date}", with: DateFormat.string(from: invoice.date ?? Date()))
-            
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{terms}", with: invoice.footnote ?? (business.defaultFootNote ?? ""))
-            
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info1}", with: invoice.paymentType ?? (business.defaultPaymentType ?? ""))
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info2}", with: String(""))
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info3}", with: String(""))
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info4}", with: String(""))
-            HTMLContent = HTMLContent.replacingOccurrences(of: "{payment_info5}", with: String(""))
+            HTMLContent = HTMLContent
+                .replacingOccurrences(of: "{company_logo}", with: getLogoPath())
+                .replacingOccurrences(of: "{bg_image}", with: "img/bg.png")
+                .replacingOccurrences(of: "{sum-pozadina_image}", with: "img/sum-pozadina.png")
+                .replacingOccurrences(of: "{invoice_item}", with: String(itemsString))
+                .replacingOccurrences(of: "{invoice_number}", with: invoice.number ?? "")
+                .replacingOccurrences(of: "{client_name}", with: invoice.client?.name ?? "")
+                .replacingOccurrences(of: "{client_address}", with: invoice.client?.address ?? "")
+                .replacingOccurrences(of: "{client_city_zip_state}", with: invoice.client?.city ?? "")
+                .replacingOccurrences(of: "{client_phone_fax}", with: String(invoice.client?.oib ?? 0))
+                .replacingOccurrences(of: "{amount_subtotal}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
+                .replacingOccurrences(of: "{amount_total}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
+                .replacingOccurrences(of: "{amount_due}", with: CurrencyFormatter.string(from: NSNumber(value: invoice.totalAmount)) ?? "")
+                
+                .replacingOccurrences(of: "{issue_date}", with: DateFormat.string(from: invoice.createdAt ?? Date()))
+                .replacingOccurrences(of: "{due_date}", with: DateFormat.string(from: invoice.date ?? Date()))
+                .replacingOccurrences(of: "{terms}", with: invoice.footnote ?? (business.defaultFootNote ?? ""))
+                .replacingOccurrences(of: "{payment_info1}", with: invoice.paymentType ?? (business.defaultPaymentType ?? ""))
+                .replacingOccurrences(of: "{payment_info2}", with: String(""))
+                .replacingOccurrences(of: "{payment_info3}", with: String(""))
+                .replacingOccurrences(of: "{payment_info4}", with: String(""))
+                .replacingOccurrences(of: "{payment_info5}", with: String(""))
             
             return HTMLContent
         } catch {
@@ -93,7 +91,7 @@ class PDFGenerator {
         }
         let printPageRenderer = PrintPageRenderer()
         let printFormatter = UIMarkupTextPrintFormatter(markupText: htmlContent)
-        
+        print(printFormatter.markupText)
         printPageRenderer.addPrintFormatter(printFormatter, startingAtPageAt: 0)
         
         guard let pdfData = drawPDFUsingPrintPageRenderer(printPageRenderer) else {
@@ -101,22 +99,24 @@ class PDFGenerator {
             return
         }
         
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let invoiceNumber = invoice.number ?? "New"
-        let fileName = path + "/\(invoiceNumber).pdf"
-        pdfData.write(toFile: fileName, atomically: true)
-        print(fileName)
+        guard let outputURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(invoiceNumber).appendingPathExtension("pdf") else { return }
+        
+        pdfData.write(to: outputURL, atomically: true)
+        print(outputURL.path)
     }
     
     private func drawPDFUsingPrintPageRenderer(_ printPageRenderer: UIPrintPageRenderer) -> NSData! {
         let data = NSMutableData()
         
         UIGraphicsBeginPDFContextToData(data, .zero, nil)
-        UIGraphicsBeginPDFPage()
         
-        printPageRenderer.drawPage(at: 0, in: UIGraphicsGetPDFContextBounds())
+        for i in 0..<printPageRenderer.numberOfPages {
+            UIGraphicsBeginPDFPage();
+            printPageRenderer.drawPage(at: i, in: UIGraphicsGetPDFContextBounds())
+        }
         
-        UIGraphicsEndPDFContext()
+        UIGraphicsEndPDFContext();
         
         return data
     }
