@@ -41,6 +41,7 @@
 		9380B6932148F5DF00C39838 /* Invoice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6912148F5DF00C39838 /* Invoice.xcdatamodeld */; };
 		9380B6952148F6AE00C39838 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B6942148F6AE00C39838 /* Client.swift */; };
 		9380B697214937E900C39838 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380B696214937E900C39838 /* Invoice.swift */; };
+		93930D052216EF1000F35541 /* HTMLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93930D042216EF1000F35541 /* HTMLGenerator.swift */; };
 		93B687A02130312300591C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6879F2130312300591C4E /* AppDelegate.swift */; };
 		93B687A52130312300591C4E /* Invoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A32130312300591C4E /* Invoice.storyboard */; };
 		93B687A72130312400591C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B687A62130312400591C4E /* Assets.xcassets */; };
@@ -103,6 +104,7 @@
 		9380B6922148F5DF00C39838 /* Invoice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Invoice.xcdatamodel; sourceTree = "<group>"; };
 		9380B6942148F6AE00C39838 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		9380B696214937E900C39838 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		93930D042216EF1000F35541 /* HTMLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLGenerator.swift; sourceTree = "<group>"; };
 		93B6879C2130312300591C4E /* Racunko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Racunko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B6879F2130312300591C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B687A42130312300591C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Invoice.storyboard; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				930F38D921F5D41F00D8471C /* HTML */,
 				9380B6682147AB3900C39838 /* PDFGenerator.swift */,
 				934D697C21FB3A2C0001FC35 /* PrintPageRenderer.swift */,
+				93930D042216EF1000F35541 /* HTMLGenerator.swift */,
 			);
 			path = "PDF generator";
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				930F390521FA0F7E00D8471C /* LogoHeader.swift in Sources */,
 				93B687CF2130455700591C4E /* InvoiceModel.swift in Sources */,
 				93B687BD213036B900591C4E /* ClientCoordinator.swift in Sources */,
+				93930D052216EF1000F35541 /* HTMLGenerator.swift in Sources */,
 				93B687CB213042FD00591C4E /* InvoiceListViewController.swift in Sources */,
 				93B687C521303C1B00591C4E /* Company.swift in Sources */,
 				9380B66C2147EFE400C39838 /* AddClientTableViewCell.swift in Sources */,

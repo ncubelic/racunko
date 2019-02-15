@@ -9,9 +9,15 @@
 import UIKit
 import WebKit
 
+protocol InvoiceViewControllerDelegate {
+    func webViewDidLoad(viewPrintFormatter printFormatter: UIViewPrintFormatter)
+}
+
 class InvoiceViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
+    
+    var delegate: InvoiceViewControllerDelegate?
 
     var HTMLContent: String?
     
@@ -19,6 +25,7 @@ class InvoiceViewController: UIViewController {
         super.viewDidLoad()
         
         webView.backgroundColor = .white
+        webView.navigationDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,8 +37,16 @@ class InvoiceViewController: UIViewController {
     func renderHTML() {
         guard let HTMLContent = HTMLContent else { return }
         guard let pathToHTML = Bundle.main.path(forResource: "template", ofType: "html") else { return }
-//        guard let url = URL(fileURLWithPath: pathToHTML) else { return }
         webView.loadHTMLString(HTMLContent, baseURL: URL(fileURLWithPath: pathToHTML))
     }
 
+}
+
+extension InvoiceViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.delegate?.webViewDidLoad(viewPrintFormatter: webView.viewPrintFormatter())
+        }
+    }
 }

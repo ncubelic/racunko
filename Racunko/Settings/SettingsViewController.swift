@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController {
 //        tableView.allowsSelectionDuringEditing = true
         
         // keyboard observer
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let _ = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
 //        view.addGestureRecognizer(gestureRecognizer)
         
         keyboardObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: nil) { notification in

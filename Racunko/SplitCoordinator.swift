@@ -65,37 +65,41 @@ extension SplitViewCoordinator: HomeCoordinatorDelegate {
 extension SplitViewCoordinator: ClientCoordinatorDelegate {
     
     func shouldPreview(_ invoice: Invoice) {
-        guard let myCompany = dependencyManager.coreDataManager.getBusiness().first else {
-            print("My company details are not stored in core data")
-            return
-        }
-        let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
-        let pdfGenerator = PDFGenerator(invoice: invoice, myCompanyDetails: myCompany)
-        invoiceVC.HTMLContent = pdfGenerator.generateHTML()
-        invoiceVC.title = invoice.number
-        detailsNavigationController.setViewControllers([invoiceVC], animated: false)
+        loadHTML(invoice)
     }
 }
 
 extension SplitViewCoordinator: InvoiceCoordinatorDelegate {
    
-    // FIXME: refactor this to be reusable in different caller places
     func shouldShow(invoice: Invoice) {
+        loadHTML(invoice)
+    }
+    
+    @objc func createPDF() {
+        // TODO: create pdf on click. You need invoice details and print formatter
+    }
+}
+
+extension SplitViewCoordinator: InvoiceViewControllerDelegate {
+    
+    func webViewDidLoad(viewPrintFormatter formatter: UIViewPrintFormatter) {
+        let pdfGenerator = PDFGenerator()
+        pdfGenerator.exportPDF(using: formatter)
+    }
+}
+
+extension SplitViewCoordinator {
+    
+    func loadHTML(_ invoice: Invoice) {
         guard let myCompany = dependencyManager.coreDataManager.getBusiness().first else {
             print("My company details are not stored in core data")
             return
         }
         let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
         invoiceVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(createPDF))
-        let pdfGenerator = PDFGenerator(invoice: invoice, myCompanyDetails: myCompany)
-        let htmlContent = pdfGenerator.generateHTML()
-        invoiceVC.HTMLContent = htmlContent
+        let htmlGenerator = HTMLGenerator(invoice: invoice, myCompanyDetails: myCompany)
+        invoiceVC.HTMLContent = htmlGenerator.generateHTML()
         invoiceVC.title = invoice.number
-        pdfGenerator.exportHTMLToPDF(htmlContent)
         detailsNavigationController.setViewControllers([invoiceVC], animated: false)
-    }
-    
-    @objc func createPDF() {
-        
     }
 }
