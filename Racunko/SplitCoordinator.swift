@@ -18,13 +18,12 @@ class SplitViewCoordinator: NSObject, SplitCoordinator {
     private var masterNavigationController = UINavigationController()
     private var detailsNavigationController = UINavigationController()
     
-    private var previewVC: PreviewViewController
+    private var currentInvoiceFormatter: UIViewPrintFormatter?
+    private var currentInvoice: Invoice?
     
     required init(rootViewController: UISplitViewController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
         self.dependencyManager = dependencyManager
-        
-        previewVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(PreviewViewController.self)
     }
     
     func start() {
@@ -33,7 +32,10 @@ class SplitViewCoordinator: NSObject, SplitCoordinator {
         homeCoordinator.start()
         homeCoordinator.delegate = self
         
-        detailsNavigationController.setViewControllers([previewVC], animated: false)
+        let detailsCoordinator = DetailsCoordinator(rootViewController: detailsNavigationController, dependencyManager: dependencyManager)
+        addChildCoordinator(detailsCoordinator)
+        detailsCoordinator.start()
+        
         rootViewController.viewControllers = [masterNavigationController, detailsNavigationController]
         masterNavigationController.view.backgroundColor = .secondaryDark
     }
@@ -65,6 +67,7 @@ extension SplitViewCoordinator: HomeCoordinatorDelegate {
 extension SplitViewCoordinator: ClientCoordinatorDelegate {
     
     func shouldPreview(_ invoice: Invoice) {
+        currentInvoice = invoice
         loadHTML(invoice)
     }
 }
@@ -72,19 +75,27 @@ extension SplitViewCoordinator: ClientCoordinatorDelegate {
 extension SplitViewCoordinator: InvoiceCoordinatorDelegate {
    
     func shouldShow(invoice: Invoice) {
+        currentInvoice = invoice
         loadHTML(invoice)
     }
     
     @objc func createPDF() {
-        // TODO: create pdf on click. You need invoice details and print formatter
+        guard
+            let currentInvoiceFormatter = currentInvoiceFormatter,
+            let invoice = currentInvoice
+            else { return }
+        
+        let filename = invoice.number ?? UUID().uuidString
+        
+        let pdfGenerator = PDFGenerator()
+        pdfGenerator.exportPDF(using: currentInvoiceFormatter, with: filename)
     }
 }
 
 extension SplitViewCoordinator: InvoiceViewControllerDelegate {
     
     func webViewDidLoad(viewPrintFormatter formatter: UIViewPrintFormatter) {
-        let pdfGenerator = PDFGenerator()
-        pdfGenerator.exportPDF(using: formatter)
+        currentInvoiceFormatter = formatter
     }
 }
 
@@ -98,6 +109,7 @@ extension SplitViewCoordinator {
         let invoiceVC = UIStoryboard(name: "Invoice", bundle: nil).instantiate(InvoiceViewController.self)
         invoiceVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(createPDF))
         let htmlGenerator = HTMLGenerator(invoice: invoice, myCompanyDetails: myCompany)
+        invoiceVC.delegate = self
         invoiceVC.HTMLContent = htmlGenerator.generateHTML()
         invoiceVC.title = invoice.number
         detailsNavigationController.setViewControllers([invoiceVC], animated: false)

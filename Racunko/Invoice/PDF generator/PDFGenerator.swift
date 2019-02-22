@@ -12,7 +12,7 @@ import QuartzCore
 
 class PDFGenerator {
     
-    func exportPDF(using printFormatter: UIViewPrintFormatter) {
+    func exportPDF(using printFormatter: UIViewPrintFormatter, with filename: String) {
         let printPageRenderer = PrintPageRenderer()
         printPageRenderer.addPrintFormatter(printFormatter, startingAtPageAt: 0)
         
@@ -21,8 +21,7 @@ class PDFGenerator {
             return
         }
         
-        let invoiceNumber = "New" // TODO: dynamic name
-        guard let outputURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(invoiceNumber).appendingPathExtension("pdf") else { return }
+        guard let outputURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(filename).appendingPathExtension("pdf") else { return }
         
         pdfData.write(to: outputURL, atomically: true)
         print(outputURL.path)

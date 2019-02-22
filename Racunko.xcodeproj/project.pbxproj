@@ -28,6 +28,7 @@
 		930F38FB21F8B0E900D8471C /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F38FA21F8B0E900D8471C /* Business.swift */; };
 		930F390421FA0F7E00D8471C /* LogoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930F390221FA0F7E00D8471C /* LogoHeader.xib */; };
 		930F390521FA0F7E00D8471C /* LogoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F390321FA0F7E00D8471C /* LogoHeader.swift */; };
+		9341206922201DBC0084B9A3 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341206822201DBC0084B9A3 /* DetailsCoordinator.swift */; };
 		934CDC9E21F07A8300C8B197 /* InvoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */; };
 		934D697521FAFCCF0001FC35 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D697421FAFCCF0001FC35 /* HomeTableViewCell.swift */; };
 		934D697921FB11B80001FC35 /* IndexPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D697821FB11B80001FC35 /* IndexPath+Extensions.swift */; };
@@ -91,6 +92,7 @@
 		930F38FA21F8B0E900D8471C /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		930F390221FA0F7E00D8471C /* LogoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoHeader.xib; sourceTree = "<group>"; };
 		930F390321FA0F7E00D8471C /* LogoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoHeader.swift; sourceTree = "<group>"; };
+		9341206822201DBC0084B9A3 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
 		934CDC9D21F07A8300C8B197 /* InvoiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItem.swift; sourceTree = "<group>"; };
 		934D697421FAFCCF0001FC35 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		934D697821FB11B80001FC35 /* IndexPath+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+Extensions.swift"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				930F38DF21F6115D00D8471C /* HomeViewController.swift */,
 				930F38E121F6116500D8471C /* Home.storyboard */,
 				934D697421FAFCCF0001FC35 /* HomeTableViewCell.swift */,
+				9341206822201DBC0084B9A3 /* DetailsCoordinator.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				93B687CD213044F400591C4E /* InvoiceTableViewCell.swift in Sources */,
 				93B687C92130419A00591C4E /* InvoiceViewController.swift in Sources */,
 				2D70FD5F21F9199700188955 /* BusinessModel.swift in Sources */,
+				9341206922201DBC0084B9A3 /* DetailsCoordinator.swift in Sources */,
 				93B687C721303ECA00591C4E /* UIStoryboard+Extension.swift in Sources */,
 				930F38DE21F610BA00D8471C /* HomeCoordinator.swift in Sources */,
 				934D697921FB11B80001FC35 /* IndexPath+Extensions.swift in Sources */,
